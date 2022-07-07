@@ -1,20 +1,32 @@
-export const menuItems = [
-    {
-        title: "Home"
-    },
-    {
-        title: "AboutUS"
-    },
-    {
-        title: "Services"
-    },
-    {
-        title: "Important Documents"
-    },
-    {
-        title: "Institute Login"
-    },
-    {
-        title: "Student Login"
-    }
+export const MenuItems = [
+  {
+    title: "Service1",
+    path: "/",
+    cName: "dropdown-link",
+  },
+  {
+    title: "Service2",
+    path: "/",
+    cName: "dropdown-link",
+  },
+  {
+    title: "Service3",
+    path: "/",
+    cName: "dropdown-link",
+  },
+  {
+    title: "Service4",
+    path: "/",
+    cName: "dropdown-link",
+  },
+  {
+    title: "Service5",
+    path: "/",
+    cName: "dropdown-link",
+  },
+  {
+    title: "Service6",
+    path: "/",
+    cName: "dropdown-link",
+  }
 ];
