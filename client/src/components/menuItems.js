@@ -1,32 +1,32 @@
 export const MenuItems = [
   {
     title: "Service1",
-    path: "/",
+    path: "/Service1",
     cName: "dropdown-link",
   },
   {
     title: "Service2",
-    path: "/",
+    path: "/Service2",
     cName: "dropdown-link",
   },
   {
     title: "Service3",
-    path: "/",
+    path: "/Service3",
     cName: "dropdown-link",
   },
   {
     title: "Service4",
-    path: "/",
+    path: "/Service4",
     cName: "dropdown-link",
   },
   {
     title: "Service5",
-    path: "/",
+    path: "/Service5",
     cName: "dropdown-link",
   },
   {
     title: "Service6",
-    path: "/",
+    path: "/Service6",
     cName: "dropdown-link",
   }
 ];
