@@ -15,13 +15,13 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path='/' exact component={Home} />
-        <Route path='/AboutUs' component={AboutUs} />
-        <Route path='/Services' component={Services} />
-        <Route path='/importantDocuments' component={ImportantDocuments} />
-        <Route path='/instituteLogin' component={InstituteLogin} />
-        <Route path='/studentLogin' component={StudentLogin} />
-        <Route path='/officerLogin' component={OfficerLogin} />
+        <Route path='/' exact element={<Home />} />
+        <Route path='/AboutUs' element={<AboutUs />} />
+        <Route path='/Services' element={<Services />} />
+        <Route path='/importantDocuments' element={<ImportantDocuments />} />
+        <Route path='/instituteLogin' element={<InstituteLogin />} />
+        <Route path='/studentLogin' element={<StudentLogin />} />
+        <Route path='/officerLogin' element={<OfficerLogin />} />
       </Routes>
     </Router>
   );
