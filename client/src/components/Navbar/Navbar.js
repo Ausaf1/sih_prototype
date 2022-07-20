@@ -37,7 +37,7 @@ function Navbar() {
           LOGO
         </Link>
         <div className="menu-icon" onClick={handleClick}>
-          <i className={click ? <GiCancel /> : <GoThreeBars />} />
+          <i className="fa-bars">{click ? <GiCancel /> : <GoThreeBars />}</i>
         </div>
         <ul className={click ? "nav-menu active" : "nav-menu"}>
           <li className="nav-item">
@@ -82,10 +82,10 @@ function Navbar() {
               Institute Login
             </Link>
           </li>
-          <li>
+          <li className="nav-item">
             <Link
               to="/studentLogin"
-              className="nav-links-mobile"
+              className="nav-links"
               onClick={closeMobileMenu}
             >
               Student Login
