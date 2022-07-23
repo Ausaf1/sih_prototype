@@ -32,7 +32,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="navbar">
+      <nav className="navbar" style={{ zIndex: 1090 }}>
         <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
           LOGO
         </Link>
