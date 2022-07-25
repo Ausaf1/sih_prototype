@@ -14,7 +14,7 @@ const InstituteLogin = () => {
           <form className="form-login">
             <label for="email">E-mail</label>
             <div className="input-email">
-            #666;
+            <AiOutlineMail className='icon'/>
               <input type="email" name="email" placeholder="Enter your e-mail" required/>
             </div>
             <label for="password">Password</label>
