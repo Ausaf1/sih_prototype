@@ -1,36 +1,32 @@
-
-h2{
-    text-align: center;
-    justify-content: center;
-    margin: 50px 0 40px 0;
-    color: rgb(56, 55, 55);
-    font-family: sans-serif
-    
-    
+.head2 {
+  text-align: center;
+  justify-content: center;
+  margin: 50px 0 40px 0;
+  color: rgb(56, 55, 55);
+  font-family: sans-serif;
 }
 
-p{
-    padding-left: 23px;
-    line-height: 1.5;
+.para {
+  padding-left: 23px;
+  line-height: 1.5;
 }
 
-h4{
-    margin: 20px 0px 5px 0px;
-    color: rgb(56, 55, 55);
-    font-family: sans-serif
+.head4 {
+  margin: 20px 0px 5px 0px;
+  color: rgb(56, 55, 55);
+  font-family: sans-serif;
 }
 
-.container{
-    margin: 0 100px 50px 100px;
-    
+.container {
+  margin: 0 100px 50px 100px;
 }
 
-ul .subpoint{
-    list-style: none;
+ul .subpoint {
+  list-style: none;
 }
 
-li{
-    padding-bottom: 2px;
-    margin-left: 40px;
-    line-height: 1.5;
+.list {
+  padding-bottom: 2px;
+  margin-left: 40px;
+  line-height: 1.5;
 }
