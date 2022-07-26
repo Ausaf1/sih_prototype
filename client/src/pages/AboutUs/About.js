@@ -28,7 +28,7 @@ const About = () => {
             //   value: "#0d47a1",
             // },
           },
-          fpsLimit: 120,
+          fpsLimit: 80,
           interactivity: {
             events: {
               onClick: {
@@ -47,7 +47,7 @@ const About = () => {
               },
               repulse: {
                 distance: 200,
-                duration: 0.4,
+                duration: 0.8,
               },
             },
           },
