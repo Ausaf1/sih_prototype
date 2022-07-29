@@ -16,7 +16,7 @@ function Navbar() {
 
   const onMouseEnter = () => {
     if (window.innerWidth < 960) {
-      setDropdown(false);
+      setDropdown(false); 
     } else {
       setDropdown(true);
     }
@@ -82,15 +82,7 @@ function Navbar() {
               Institute Login
             </Link>
           </li>
-          <li className="nav-item">
-            <Link
-              to="/studentLogin"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Student Login
-            </Link>
-          </li>
+        
           <li className="nav-item">
             <Link
               to="/officerLogin"
