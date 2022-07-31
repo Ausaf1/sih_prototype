@@ -10,7 +10,7 @@ import StudentLogin from "./pages/StudentLogin/StudentLogin";
 import OfficerLogin from "./pages/OfficerLogin/OfficerLogin";
 import Navbar from "./components/Navbar/Navbar";
 import Service1 from "./pages/Services/service1/service1.jsx";
-
+import Footer from "../src/components/footer/footer";
 function App() {
   return (
     <Router>
@@ -25,6 +25,7 @@ function App() {
         <Route path='/studentLogin' element={<StudentLogin />} />
         <Route path='/officerLogin' element={<OfficerLogin />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
