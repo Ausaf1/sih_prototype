@@ -16,7 +16,7 @@ const About = () => {
     console.log(container);
   };
   return (
-    <div className="container">
+    <div className="container1">
       <h2 className="head2">About Us</h2>
       <Particles
         id="tsparticles"
