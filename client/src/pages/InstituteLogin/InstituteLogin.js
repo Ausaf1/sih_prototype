@@ -1,7 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState }  from 'react'
 import './Institute.css'
+import { Link, useNavigate } from "react-router-dom";
 import {AiOutlineUnlock, AiOutlineMail} from 'react-icons/ai'
+import axios from "axios";
 const InstituteLogin = () => {
+  const [instituteId, setinstituteId] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const navigate = useNavigate();
+  
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
+      navigate("/institute/dashboard");
+    }
+  }, [navigate]);
+
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const { data } = await axios.post(
+        "/api/auth/instituteLogin",
+        { instituteId, password },
+        config
+      );
+      localStorage.setItem("authToken", data.token);
+      navigate("/institute/dashboard");
+    } catch (error) {
+      setError(error.response.data.message);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
+    }
+  };
   return (
       <div id="login-pagee">
       <div className="loginn">
@@ -13,7 +49,8 @@ const InstituteLogin = () => {
         </div>
         <h2 className="login-title">Login</h2>
         <p className="notice">Please login to access the system</p>
-        <form className="form-login">
+        <form className="form-login" onSubmit={loginHandler}>
+        {error && <span className="error">{error}</span>}
           <label for="instituteId">Institute Id</label>
           <div className="input-email">
             <AiOutlineMail className="icon" />
@@ -21,7 +58,9 @@ const InstituteLogin = () => {
               type="instituteId"
               name="instituteId"
               placeholder="Enter your officer id"
-              required
+              value={instituteId}
+            onChange={(e) => setinstituteId(e.target.value)}
+            required
             />
           </div>
           <label for="password">Password</label>
@@ -31,7 +70,9 @@ const InstituteLogin = () => {
               type="password"
               name="password"
               placeholder="Enter your password"
-              required
+              value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
             />
           </div>
 

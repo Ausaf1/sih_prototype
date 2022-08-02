@@ -13,6 +13,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 // import PrivateRoute from "./components/routing/PrivateRoute";
 import PrivateScreen from "./components/screens/PrivateScreen";
+import InstituteLanding from "./components/screens/InstituteLanding.js";
 import Footer from "./components/Footer/Footer";
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
         <Route path="/importantDocuments" element={<ImportantDocuments />} />
         <Route path="/instituteLogin" element={<InstituteLogin />} />
         <Route path="/officerLogin" element={<OfficerLogin />} />
+        <Route path="/institute/dashboard" element={<InstituteLanding />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/passwordreset/:resetToken" element={<ResetPassword />} />
       </Routes>
