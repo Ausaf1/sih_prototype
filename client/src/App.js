@@ -13,6 +13,7 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 // import PrivateRoute from "./components/routing/PrivateRoute";
 import PrivateScreen from "./components/screens/PrivateScreen";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/passwordreset/:resetToken" element={<ResetPassword />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
