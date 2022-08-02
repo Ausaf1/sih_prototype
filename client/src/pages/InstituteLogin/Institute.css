@@ -67,7 +67,7 @@ a {
     min-width: 30px;
     text-align: center;
   }
-  input[type="email"],
+  input[type="instituteId"],
   input[type="password"] {
     width: 100%;
     border: 0;
