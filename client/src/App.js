@@ -10,6 +10,7 @@ import StudentLogin from "./pages/StudentLogin/StudentLogin";
 import OfficerLogin from "./pages/OfficerLogin/OfficerLogin";
 import Navbar from "./components/Navbar/Navbar";
 import Service1 from "./pages/Services/service1/service1.jsx";
+import Service2 from "./pages/Services/service2/service2.js";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/AboutUs' element={<AboutUs />} />
         <Route path='/Services' element={<Services />} />
         <Route path='/Service1' element={<Service1 />} />
+        <Route path='/Service2' element={<Service2 />} />
         <Route path='/importantDocuments' element={<ImportantDocuments />} />
         <Route path='/instituteLogin' element={<OfficerLogin/>} />
         <Route path='/officerLogin' element={<InstituteLogin/>} />
