@@ -1,24 +1,36 @@
 .head2 {
+  /* background-color:
+  #94b49f;
   text-align: center;
   justify-content: center;
   margin: 50px 0 40px 0;
   color: rgb(56, 55, 55);
-  font-family: sans-serif;
+  font-family: sans-serif; */
+  background-color:
+  #94b49f;
+  color: black;
+  padding: 30px;
+  text-align: center;
+  font-family: Robotto, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
 }
 
-.para {
+.content {
   padding-left: 23px;
   line-height: 1.5;
+  text-align: justify;
 }
 
 .head4 {
   margin: 20px 0px 5px 0px;
   color: rgb(56, 55, 55);
   font-family: sans-serif;
+  font-size: 1.1rem;
 }
 
 .container {
-  margin: 0 100px 50px 100px;
+  margin: 70px 100px 50px 100px;
 }
 
 ul .subpoint {
@@ -29,4 +41,5 @@ ul .subpoint {
   padding-bottom: 2px;
   margin-left: 40px;
   line-height: 1.5;
+  text-align: justify;
 }

@@ -1,11 +1,9 @@
-body {
-    background-color:
-        #2d76ab;
-}
 
-.heading {
-    background-color: black;
-    color: white;
+
+.heading-query{
+    background-color:
+    #94b49f;
+    color: black;
     padding: 30px;
     text-align: left;
     padding-left: 100px;
@@ -14,20 +12,21 @@ body {
     font-weight: 300;
 }
 
-.sub-heading {
+.sub-heading-query {
     font-size: 26px;
     font-weight: lighter;
 }
 
-.container {
+.container-query {
     margin: 50px 50px 25px 50px;
     padding: 75px;
     background-color: rgb(255, 255, 255);
     height: auto;
-    width: 60%;
+    width: 65%;
     position: relative;
     left: 15%;
     box-shadow: 0px 0px 10px 0px rgba(67, 67, 68, 0.75);
+    border-radius: 10px;
 
 
 }
@@ -52,10 +51,19 @@ body {
     margin-left: 5%;
 }
 
+.r-button{
+    margin-right: 5px;
+}
+
+.form-items #email{
+    margin-top: 1px;
+}
 .form {
     display: flex;
     flex-direction: row;
     color: rgb(144, 148, 153);
+    flex-wrap: wrap;
+    font-size: 100%;  
 }
 
 .form-input {
@@ -63,8 +71,14 @@ body {
     border-bottom: 1px solid rgb(218, 222, 227);
     margin: 7px 0 10px 0;
     outline: none;
-    font-size: medium;
-    color: rgb(45, 47, 48);
+    font-size: 100%;
+    color: rgb(45, 47, 48); 
+}
+
+#email{
+    
+    border: none;
+    border-bottom: 1px solid rgb(218, 222, 227);
 }
 
 
@@ -72,6 +86,8 @@ body {
     display: flex;
     flex-direction: column;
     margin: 20px 20px 0 20px;
+    
+    
 }
 
 
@@ -79,28 +95,43 @@ body {
     color: red;
 }
 
-.message {
-    margin: 18px;
+#c-message {
+   
     width: 100%;
-    height: 70px;
+    height: 70px;   
     border: none;
     border-bottom: 1px solid rgb(218, 222, 227);
     color: rgb(144, 148, 153);
     font-family: Robotto, sans-serif;
     outline: none;
+    
+}
+#f-message{
+    margin:20px;
+    width: 100%;
+    height: 70px;   
+    border: none;
+    border-bottom: 1px solid rgb(218, 222, 227);
+    color: rgb(144, 148, 153);
+    font-family: Robotto, sans-serif;
+    outline: none;
+
 }
 
 .submit {
     margin: 20px;
-    background-color: #2d76ab;
+    background-color:   #94b49f;
     color: white;
     border: none;
     padding: 10px;
     font-size: 1.2rem;
     font-weight: lighter;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 5px; 
+}
 
+.submit:hover{
+    background-color: #354b3c;
 }
 
 @media screen and (max-width: 960px) {
@@ -108,9 +139,6 @@ body {
         display: flex;
         flex-direction: column;
     }
-
-
-
 }
 
 @media screen and (max-width: 764px) {

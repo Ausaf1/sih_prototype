@@ -16,8 +16,10 @@ const About = () => {
     console.log(container);
   };
   return (
+    <div>
+          <h2 className="head2">ABOUT US</h2>
+
     <div className="container">
-      <h2 className="head2">About Us</h2>
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -95,20 +97,20 @@ const About = () => {
           detectRetina: true,
         }}
       />
-      <h4>Vision</h4>
-      <p className="para">
+      <h4 className="head4">Vision</h4>
+      <p className="content">
         This initiative aims at providing a Simplified, Mission-oriented,
         Accountable, Responsive & Transparent 'SMART' System for faster &
         effective disposal of Scholarships applications and delivery of funds
         directly into beneficiaries account without any leakages.
       </p>
       <h4 className="head4">Mission</h4>
-      <p>
+      <p className="content">
         Our aims is to provide common electronic portal for implementing
         Scholarships schemes launched by Union Government, State Government and
         Union Territories across the country.
       </p>
-      <h4>Objectives</h4>
+      <h4 className="head4">Objectives</h4>
       <ul>
         <li className="list">
           Ensure timely disbursement of Scholarships to students
@@ -125,16 +127,16 @@ const About = () => {
         <li className="list">Application of Direct Benefit Transfer</li>
         <li className="list">Ensure accountability in the process</li>
       </ul>
-      <h4>Benefits</h4>
+      <h4 className="head4">Benefits</h4>
       <ul>
         <li className="list">Simplified process for the students</li>
         <ul className="subpoint">
           <li className="list">
-            {" "}
-            - All scholarships information available under one umbrella
+         
+            - All scholarship information available under one umbrella
           </li>
         </ul>
-        <li>Improved transparency</li>
+        <li className="list">Improved transparency</li>
         <ul className="subpoint">
           <li className="list">
             - Duplicates can be reduced to the maximum extent
@@ -157,6 +159,7 @@ const About = () => {
           of funds
         </li>
       </ul>
+    </div>
     </div>
   );
 };
