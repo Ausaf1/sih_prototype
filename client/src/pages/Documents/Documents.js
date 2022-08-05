@@ -1,7 +1,9 @@
-import React from "react";
+import React from 'react'
+import App from "./components/app";
+const About = () => {
+  return (
+    <App />
+  )
+}
 
-const Documents = () => {
-  return <div>Documents</div>;
-};
-
-export default Documents;
+export default About;

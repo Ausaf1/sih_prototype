@@ -9,7 +9,8 @@ import InstituteLogin from "./pages/InstituteLogin/InstituteLogin";
 import StudentLogin from "./pages/StudentLogin/StudentLogin";
 import OfficerLogin from "./pages/OfficerLogin/OfficerLogin";
 import Navbar from "./components/Navbar/Navbar";
-
+import Service1 from "./pages/Services/service1/service1.jsx";
+import Footer from "../src/components/footer/footer";
 function App() {
   return (
     <Router>
@@ -18,11 +19,13 @@ function App() {
         <Route path='/' exact element={<Home />} />
         <Route path='/AboutUs' element={<AboutUs />} />
         <Route path='/Services' element={<Services />} />
+        <Route path='/Service1' element={<Service1 />} />
         <Route path='/importantDocuments' element={<ImportantDocuments />} />
         <Route path='/instituteLogin' element={<InstituteLogin />} />
         <Route path='/studentLogin' element={<StudentLogin />} />
         <Route path='/officerLogin' element={<OfficerLogin />} />
       </Routes>
+      <Footer />
     </Router>
   );
 }
