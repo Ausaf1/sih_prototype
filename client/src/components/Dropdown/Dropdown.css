@@ -27,6 +27,7 @@
   text-decoration: none;
   color: #fff;
   padding: 16px;
+  opacity: 1000;
 }
 
 @media screen and (max-width: 960px) {

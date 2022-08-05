@@ -1,6 +1,6 @@
 import React, { useEffect, useState }  from 'react'
 import './Institute.css'
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {AiOutlineUnlock, AiOutlineMail} from 'react-icons/ai'
 import axios from "axios";
 const InstituteLogin = () => {
