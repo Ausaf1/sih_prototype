@@ -61,7 +61,7 @@
   .next {
     color: transparent;
     cursor: pointer;
-    z-index: 100;
+    /* z-index: 1000; */
     position: absolute;
     top: 50%;
     width: auto;
@@ -96,7 +96,7 @@
     display: flex;
     top: 85%;
     justify-content: center;
-    /* z-index: 1000; */
+    z-index: 1000;
   }
   
   .dot {
@@ -105,7 +105,7 @@
     width: 1.5rem;
     margin: 0px 3px;
     background-color: transparent;
-    /* background-color: rgba(0, 0, 0, 0.3); */
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
     display: inline-block;
   }
@@ -114,9 +114,9 @@
     background-color: rgba(255, 255, 255, 0.5);
   }
   
-  /* .active-dot {
+  .active-dot {
     background-color: rgba(255, 255, 255, 0.5);
-  } */
+  }
   
   .slider-container:hover .dot {
     background-color: rgba(0, 0, 0, 0.3);
@@ -127,6 +127,10 @@
   
   .play-pause {
     color: black;
+  }
+
+  .arrows{
+    z-index: 1000;
   }
   
   @-webkit-keyframes zoom {

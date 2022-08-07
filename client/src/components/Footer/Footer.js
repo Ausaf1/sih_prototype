@@ -16,7 +16,7 @@ function Footer() {
   return (
     <>
       {!user ? (
-        <div className="container">
+        <div className="Container">
           <footer>
             <div className="footer-content">
               <table>

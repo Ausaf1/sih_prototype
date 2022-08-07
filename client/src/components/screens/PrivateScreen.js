@@ -31,29 +31,15 @@ const PrivateScreen = () => {
     fetchPrivateData();
   }, [navigate]);
 
-const logoutHandler = async () => {
-  localStorage.removeItem("authToken");
-  navigate("/officerLogin");
-}
+  // const logoutHandler = async () => {
+  //   localStorage.removeItem("authToken");
+  //   navigate("/officerLogin");
+  // }
 
   return error ? (
     <span className="error">{error}</span>
   ) : (
-    <>
-      <div
-        style={{
-          backgroundColor: "#f5f5f5",
-          padding: "20px",
-          borderRadius: "5px",
-          margin: "20px",
-          fontSize: "20px",
-          fontWeight: "bold",
-        }}
-      >
-        "Welcome to Private Area"
-      </div>
-      <button onClick={logoutHandler}>Logout</button>
-    </>
+    window.location.replace("http://localhost:3001/")
   );
 };
 
