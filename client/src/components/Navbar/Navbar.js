@@ -45,65 +45,70 @@ function Navbar() {
   return (
     <>
       {!user ? (
-        <nav className="navbar">
+        <nav className="Navbar1">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             LOGO
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className="fa-bars">{click ? <GiCancel /> : <GoThreeBars />}</i>
           </div>
-          <ul className={click ? "nav-menu active" : "nav-menu"}>
-            <li className="nav-item">
-              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+          <ul className={click ? "Nav-Menu1 active" : "Nav-Menu1"}>
+            <li className="Nav-Items">
+              <Link to="/" className="Nav-Links1" onClick={closeMobileMenu}>
                 Home
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="Nav-Items">
               <Link
                 to="/AboutUS"
-                className="nav-links"
+                className="Nav-Links1"
                 onClick={closeMobileMenu}
               >
                 AboutUs
               </Link>
             </li>
             <li
-              className="nav-item"
+              className="Nav-Items"
               onMouseEnter={onMouseEnter}
               onMouseLeave={onMouseLeave}
             >
               <Link
                 to="/services"
-                className="nav-links"
+                className="Nav-Links1"
                 onClick={closeMobileMenu}
               >
-                Services <RiArrowDropDownFill />
+                Services{" "}
+                <RiArrowDropDownFill
+                  style={{
+                    display: "inline",
+                  }}
+                />
               </Link>
               {dropdown && <Dropdown />}
             </li>
-            <li className="nav-item">
+            <li className="Nav-Items">
               <Link
                 to="/importantDocuments"
-                className="nav-links"
+                className="Nav-Links1"
                 onClick={closeMobileMenu}
               >
                 Important Documents
               </Link>
             </li>
-            <li className="nav-item">
+            <li className="Nav-Items">
               <Link
                 to="/instituteLogin"
-                className="nav-links"
+                className="Nav-Links1"
                 onClick={closeMobileMenu}
               >
                 Institute Login
               </Link>
             </li>
 
-            <li className="nav-item">
+            <li className="Nav-Items">
               <Link
                 to="/officerLogin"
-                className="nav-links"
+                className="Nav-Links1"
                 onClick={closeMobileMenu}
               >
                 Officer's Login

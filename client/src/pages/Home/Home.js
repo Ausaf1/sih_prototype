@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <>
       <Slider />
-      <div class="container">
+      <div class="Container">
         <div class="column-2 box">
           <h1>What is Lorem Ipsum1?</h1>
           <p>
