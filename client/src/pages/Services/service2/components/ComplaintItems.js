@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import Complaint, { FormItems } from "./ItemList";
 
 function ComplaintItems(){
-
-
-
-    
-
     function CreateComplaintItem(complaint) {
         return (
           <div className="form-items"> 
