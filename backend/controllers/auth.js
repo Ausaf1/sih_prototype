@@ -1,4 +1,5 @@
 const Officer = require("../models/User");
+const Institute=require("../models/Institute");
 const ErrorResponse = require("../utils/errorResponse");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
@@ -24,7 +25,27 @@ exports.login = async (req, res, next) => {
     next(err);
   }
 };
-
+exports.ilogin=async(req,res,next)=>{
+  const { instituteId, password } = req.body;
+  if (!instituteId || !password) {
+    return next(
+      new ErrorResponse("Please provide InstituteId and password", 400)
+    );
+  }
+  try {
+    const user = await Institute.findOne({ instituteId }).select("+password");
+    if (!user) {
+      return next(new ErrorResponse("Invalid InstituteId", 401));
+    }
+    const isMatch = await user.matchPassword(password);
+    if (!isMatch) {
+      return next(new ErrorResponse("Invalid password", 401));
+    }
+    sendToken(user, 200, res);
+  } catch (err) {
+    next(err);
+  }
+}
 exports.forgotPassword = async (req, res, next) => {
   const { email } = req.body;
   try {

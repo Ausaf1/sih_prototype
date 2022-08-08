@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { Button } from "./Button";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
@@ -10,13 +10,14 @@ import { GoThreeBars } from "react-icons/go";
 function Navbar() {
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
+  const [user, setUser] = useState("");
 
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
   const onMouseEnter = () => {
     if (window.innerWidth < 960) {
-      setDropdown(false); 
+      setDropdown(false);
     } else {
       setDropdown(true);
     }
@@ -30,71 +31,95 @@ function Navbar() {
     }
   };
 
+  useEffect(() => {
+    setInterval(() => {
+      const user1 = localStorage.getItem("authToken");
+      if (user1) {
+        setUser(user1);
+      } else {
+        setUser("");
+      }
+    }, 500);
+  }, []);
+
   return (
     <>
-      <nav className="navbar">
-        <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-          LOGO
-        </Link>
-        <div className="menu-icon" onClick={handleClick}>
-          <i className="fa-bars">{click ? <GiCancel /> : <GoThreeBars />}</i>
-        </div>
-        <ul className={click ? "nav-menu active" : "nav-menu"}>
-          <li className="nav-item">
-            <Link to="/" className="nav-links" onClick={closeMobileMenu}>
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/AboutUS" className="nav-links" onClick={closeMobileMenu}>
-              AboutUs
-            </Link>
-          </li>
-          <li
-            className="nav-item"
-            onMouseEnter={onMouseEnter}
-            onMouseLeave={onMouseLeave}
-          >
-            <Link
-              to="/services"
-              className="nav-links"
-              onClick={closeMobileMenu}
+      {!user ? (
+        <nav className="Navbar1">
+          <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
+            LOGO
+          </Link>
+          <div className="menu-icon" onClick={handleClick}>
+            <i className="fa-bars">{click ? <GiCancel /> : <GoThreeBars />}</i>
+          </div>
+          <ul className={click ? "Nav-Menu1 active" : "Nav-Menu1"}>
+            <li className="Nav-Items">
+              <Link to="/" className="Nav-Links1" onClick={closeMobileMenu}>
+                Home
+              </Link>
+            </li>
+            <li className="Nav-Items">
+              <Link
+                to="/AboutUS"
+                className="Nav-Links1"
+                onClick={closeMobileMenu}
+              >
+                AboutUs
+              </Link>
+            </li>
+            <li
+              className="Nav-Items"
+              onMouseEnter={onMouseEnter}
+              onMouseLeave={onMouseLeave}
             >
-              Services <RiArrowDropDownFill />
-            </Link>
-            {dropdown && <Dropdown />}
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/importantDocuments"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Important Documents
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/instituteLogin"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Institute Login
-            </Link>
-          </li>
-        
-          <li className="nav-item">
-            <Link
-              to="/officerLogin"
-              className="nav-links"
-              onClick={closeMobileMenu}
-            >
-              Officer's Login
-            </Link>
-          </li>
-        </ul>
-        {/* <Button /> */}
-      </nav>
+              <Link
+                to="/services"
+                className="Nav-Links1"
+                onClick={closeMobileMenu}
+              >
+                Services{" "}
+                <RiArrowDropDownFill
+                  style={{
+                    display: "inline",
+                  }}
+                />
+              </Link>
+              {dropdown && <Dropdown />}
+            </li>
+            <li className="Nav-Items">
+              <Link
+                to="/importantDocuments"
+                className="Nav-Links1"
+                onClick={closeMobileMenu}
+              >
+                Important Documents
+              </Link>
+            </li>
+            <li className="Nav-Items">
+              <Link
+                to="/instituteLogin"
+                className="Nav-Links1"
+                onClick={closeMobileMenu}
+              >
+                Institute Login
+              </Link>
+            </li>
+
+            <li className="Nav-Items">
+              <Link
+                to="/officerLogin"
+                className="Nav-Links1"
+                onClick={closeMobileMenu}
+              >
+                Officer's Login
+              </Link>
+            </li>
+          </ul>
+          {/* <Button /> */}
+        </nav>
+      ) : (
+        ""
+      )}
     </>
   );
 }
