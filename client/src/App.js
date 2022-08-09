@@ -9,6 +9,7 @@ import InstituteLogin from "./pages/InstituteLogin/InstituteLogin";
 import OfficerLogin from "./pages/OfficerLogin/OfficerLogin";
 import Navbar from "./components/Navbar/Navbar";
 import Service1 from "./pages/Services/service1/service1.jsx";
+import Service2 from "./pages/Services/service2/service2.js";
 import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import PrivateRoute from "./components/routing/PrivateRoute";
@@ -27,6 +28,7 @@ function App() {
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Services" element={<Services />} />
         <Route path="/Service1" element={<Service1 />} />
+        <Route path='/Service2' element={<Service2 />} />
         <Route path="/importantDocuments" element={<ImportantDocuments />} />
         <Route path="/instituteLogin" element={<InstituteLogin />} />
         <Route path="/officerLogin" element={<OfficerLogin />} />
