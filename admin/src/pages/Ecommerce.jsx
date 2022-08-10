@@ -1,38 +1,53 @@
 import React from 'react';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { GoPrimitiveDot } from 'react-icons/go';
-import { IoIosMore } from 'react-icons/io';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { Stacked, Button, SparkLine, LineChart } from '../components';
+// import { IoIosMore } from 'react-icons/io';
+// import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
+import html2canvas from 'html2canvas';
+import { jsPDF } from 'jspdf';
+import { Stacked, Button, SparkLine } from '../components';
 import {
   earningData,
   SparklineAreaData,
   // ecomPieChartData,
   // medicalproBranding,
-  dropdownData,
-  recentTransactions,
-  weeklyStats,
+  // dropdownData,
+  // recentTransactions,
+  // weeklyStats,
 } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 // import product9 from '../data/product9.jpg';
 
-const DropDown = ({ currentMode }) => (
-  <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
-    <DropDownListComponent
-      id="time"
-      fields={{ text: 'Time', value: 'Id' }}
-      style={{ border: 'none', color: currentMode === 'Dark' && 'white' }}
-      value="1"
-      dataSource={dropdownData}
-      popupHeight="220px"
-      popupWidth="120px"
-    />
-  </div>
-);
+// const DropDown = ({ currentMode }) => (
+//   <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
+//     <DropDownListComponent
+//       id="time"
+//       fields={{ text: 'Time', value: 'Id' }}
+//       style={{ border: 'none', color: currentMode === 'Dark' && 'white' }}
+//       value="1"
+//       dataSource={dropdownData}
+//       popupHeight="220px"
+//       popupWidth="120px"
+//     />
+//   </div>
+// );
 
 const Ecommerce = () => {
   const { currentColor, currentMode } = useStateContext();
+  const printRef = React.useRef();
 
+  const handleDownloadPdf = async () => {
+    const element = printRef.current;
+    const canvas = await html2canvas(element);
+    const data = canvas.toDataURL('image/png');
+    // eslint-disable-next-line new-cap
+    const pdf = new jsPDF();
+    const imgProperties = pdf.getImageProperties(data);
+    const pdfWidth = pdf.internal.pageSize.getWidth();
+    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
+    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
+    pdf.save('print.pdf');
+  };
   return (
     <div className="mt-24">
       <div className="flex flex-wrap lg:flex-nowrap justify-center ">
@@ -84,22 +99,22 @@ const Ecommerce = () => {
         </div>
       </div>
 
-      <div className="flex gap-10 flex-wrap justify-center">
+      <div className="flex gap-10 flex-wrap justify-center" ref={printRef}>
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780  ">
           <div className="flex justify-between">
-            <p className="font-semibold text-xl">Revenue Updates</p>
+            <p className="font-semibold text-xl">Updates</p>
             <div className="flex items-center gap-4">
               <p className="flex items-center gap-2 text-gray-600 hover:drop-shadow-xl">
                 <span>
                   <GoPrimitiveDot />
                 </span>
-                <span>Expense</span>
+                <span>Students</span>
               </p>
               <p className="flex items-center gap-2 text-green-400 hover:drop-shadow-xl">
                 <span>
                   <GoPrimitiveDot />
                 </span>
-                <span>Budget</span>
+                <span>Institutes</span>
               </p>
             </div>
           </div>
@@ -107,17 +122,17 @@ const Ecommerce = () => {
             <div className=" border-r-1 border-color m-4 pr-10">
               <div>
                 <p>
-                  <span className="text-3xl font-semibold">$93,438</span>
+                  <span className="text-3xl font-semibold">93,438</span>
                   <span className="p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white bg-green-400 ml-3 text-xs">
                     23%
                   </span>
                 </p>
-                <p className="text-gray-500 mt-1">Budget</p>
+                <p className="text-gray-500 mt-1">Students</p>
               </div>
               <div className="mt-8">
-                <p className="text-3xl font-semibold">$48,487</p>
+                <p className="text-3xl font-semibold">48,487</p>
 
-                <p className="text-gray-500 mt-1">Expense</p>
+                <p className="text-gray-500 mt-1">Institutes</p>
               </div>
 
               <div className="mt-5">
@@ -132,12 +147,19 @@ const Ecommerce = () => {
                 />
               </div>
               <div className="mt-10">
-                <Button
-                  color="white"
-                  bgColor={currentColor}
-                  text="Download Report"
-                  borderRadius="10px"
-                />
+                <button
+                  onClick={handleDownloadPdf}
+                  type="button"
+                  style={{
+                    color: 'white',
+                    backgroundColor: currentColor,
+                    borderRadius: '10px',
+                    width: '100%',
+                    height: '40px',
+                  }}
+                >
+                  Download Report
+                </button>
               </div>
             </div>
             <div>
@@ -192,7 +214,7 @@ const Ecommerce = () => {
         </div> */}
       </div>
 
-      <div className="flex gap-10 m-4 flex-wrap justify-center">
+      {/* <div className="flex gap-10 m-4 flex-wrap justify-center">
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg p-6 rounded-2xl">
           <div className="flex justify-between items-center gap-2">
             <p className="text-xl font-semibold">Recent Transactions</p>
@@ -243,10 +265,10 @@ const Ecommerce = () => {
             <LineChart />
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="flex flex-wrap justify-center">
-        <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
+        {/* <div className="md:w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">Weekly Stats</p>
             <button
@@ -292,7 +314,7 @@ const Ecommerce = () => {
               />
             </div>
           </div>
-        </div>
+        </div> */}
         {/* <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">MedicalPro Branding</p>
