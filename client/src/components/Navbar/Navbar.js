@@ -50,8 +50,13 @@ function Navbar() {
           <img
             src="/images/sih_logo.png"
             style={{
+<<<<<<< HEAD
               width: "100px",
               height: "100px",
+=======
+              width: "86",
+              height: "86px",
+>>>>>>> 0e556a1be755f3732ca48d826913dcdf1e511fd2
               
             }}
             alt="example"
