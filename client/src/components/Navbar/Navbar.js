@@ -47,7 +47,15 @@ function Navbar() {
       {!user ? (
         <nav className="Navbar1">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            LOGO
+          <img
+            src="/images/sih_logo.png"
+            style={{
+              width: "86",
+              height: "86px",
+              
+            }}
+            alt="example"
+          />
           </Link>
           <div className="menu-icon" onClick={handleClick}>
             <i className="fa-bars">{click ? <GiCancel /> : <GoThreeBars />}</i>
