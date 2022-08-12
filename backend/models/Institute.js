@@ -20,6 +20,37 @@ const instituteSchema = new mongoose.Schema(
       maxlength: 20,
       select: false,
     },
+    instituteName: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    instituteCourse: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    instituteScholarship: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    instituteRegister: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    password :{
+      type: String,
+      required: true,
+      minlength: 6,
+      maxlength: 20,
+      select: false,
+    },
+    status: {
+      type:String,
+      default: "pending"
+    },
   },
   { timestamps: true }
 );

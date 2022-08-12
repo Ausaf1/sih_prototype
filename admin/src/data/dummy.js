@@ -27,7 +27,7 @@ import { MdOutlineSupervisorAccount } from 'react-icons/md';
 // import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
 import { GiLouvrePyramid } from 'react-icons/gi';
-import { GrLocation } from 'react-icons/gr';
+// import { GrLocation } from 'react-icons/gr';
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
 import avatar3 from './avatar3.png';
@@ -74,23 +74,23 @@ export const kanbanGrid = [
 
   { headerText: 'Done', keyField: 'Close', allowToggle: true },
 ];
-const gridEmployeeProfile = (props) => (
-  <div className="flex items-center gap-2">
-    <img
-      className="rounded-full w-10 h-10"
-      src={props.EmployeeImage}
-      alt="employee"
-    />
-    <p>{props.Name}</p>
-  </div>
-);
+// const gridEmployeeProfile = (props) => (
+//   <div className="flex items-center gap-2">
+//     <img
+//       className="rounded-full w-10 h-10"
+//       src={props.EmployeeImage}
+//       alt="employee"
+//     />
+//     <p>{props.Name}</p>
+//   </div>
+// );
 
-const gridEmployeeCountry = (props) => (
-  <div className="flex items-center justify-center gap-2">
-    <GrLocation />
-    <span>{props.Country}</span>
-  </div>
-);
+// const gridEmployeeCountry = (props) => (
+//   <div className="flex items-center justify-center gap-2">
+//     <GrLocation />
+//     <span>{props.Country}</span>
+//   </div>
+// );
 export const EditorData = () => (
   <div>
     <h3>
@@ -151,15 +151,15 @@ const customerGridImage = (props) => (
   </div>
 );
 
-const customerGridStatus = (props) => (
-  <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
-    <p
-      style={{ background: props.StatusBg }}
-      className="rounded-full h-3 w-3"
-    />
-    <p>{props.Status}</p>
-  </div>
-);
+// const customerGridStatus = (props) => (
+//   <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
+//     <p
+//       style={{ background: props.StatusBg }}
+//       className="rounded-full h-3 w-3"
+//     />
+//     <p>{props.Status}</p>
+//   </div>
+// );
 export const areaPrimaryXAxis = {
   valueType: 'DateTime',
   labelFormat: 'y',
@@ -429,7 +429,7 @@ export const customersGrid = [
     width: '130',
     format: 'yMd',
     textAlign: 'Center',
-    template: customerGridStatus,
+    // template: customerGridStatus,
   },
   {
     field: 'Weeks',
@@ -471,47 +471,41 @@ export const employeesGrid = [
   },
   {
     headerText: 'Institute Name',
+    field: 'instituteName',
     width: '150',
-    template: gridEmployeeProfile,
+    // template: gridEmployeeProfile,
     textAlign: 'Center',
   },
-  { field: 'Name', headerText: '', width: '0', textAlign: 'Center' },
+  // { field: 'Name', headerText: '', width: '0', textAlign: 'Center' },
   {
-    field: 'Title',
-    headerText: 'Designation',
+    field: 'instituteCourse',
+    headerText: 'Course',
     width: '170',
     textAlign: 'Center',
   },
-  {
-    headerText: 'Country',
-    width: '120',
-    textAlign: 'Center',
-    template: gridEmployeeCountry,
-  },
+  // {
+  //   headerText: 'Scholarship',
+  //   field: 'instituteScholarship',
+  //   width: '120',
+  //   textAlign: 'Center',
+  //   template: gridEmployeeCountry,
+  // },
 
   {
-    field: 'HireDate',
-    headerText: 'Hire Date',
+    field: 'instituteRegister',
+    headerText: 'Registration Date',
     width: '135',
     format: 'yMd',
     textAlign: 'Center',
   },
-
   {
-    field: 'Status',
+    field: 'status',
     headerText: 'Status',
-    width: '120',
+    width: '130',
+    // format: 'yMd',
     textAlign: 'Center',
-    format: 'yMd',
-    template: customerGridStatus,
+    // template: customerGridStatus
   },
-
-  // { field: 'Status',
-  // headerText: 'Status',
-  // width: '130',
-  // format: 'yMd',
-  // textAlign: 'Center',
-  // template: customerGridStatus },
 ];
 
 export const links = [
@@ -519,7 +513,7 @@ export const links = [
     title: 'Dashboard',
     links: [
       {
-        name: 'Admin Panel', // ecommerce
+        name: 'Admin Panel',
         icon: <RiContactsLine />,
       },
     ],
