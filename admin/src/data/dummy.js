@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import {
   AiOutlineCalendar,
   AiOutlineAreaChart,
@@ -7,6 +9,7 @@ import {
 } from 'react-icons/ai';
 import {
   FiEdit,
+  FiDelete,
   FiPieChart,
   FiBarChart,
   FiCreditCard,
@@ -59,6 +62,34 @@ export const gridOrderStatus = (props) => (
     {props.Status}
   </button>
 );
+const baseUrl = '/institute/update/';
+const getId = (props) => baseUrl + props.id;
+
+export const gridEdit = (props) => (
+  <Link to={getId(props)}>
+    <FiEdit className="text-gray-600 hover:text-gray-800" />
+  </Link>
+);
+// const baseUrll = '/institute/delete/';
+// const getIdd = (props) => {
+//   console.log(props);
+//   return props.id;
+// };
+
+const handleDeleteProperty = async (id) => {
+  try {
+    const res = axios.post(`/api/admin/institute/delete/${id}`);
+    window.location.reload();
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+  return null;
+};
+
+export const gridDel = (props) => (
+  <FiDelete onClick={() => handleDeleteProperty(props.id)} className="text-gray-600 hover:text-gray-800" />
+);
 
 export const kanbanGrid = [
   { headerText: 'To Do', keyField: 'Open', allowToggle: true },
@@ -74,23 +105,23 @@ export const kanbanGrid = [
 
   { headerText: 'Done', keyField: 'Close', allowToggle: true },
 ];
-const gridEmployeeProfile = (props) => (
-  <div className="flex items-center gap-2">
-    <img
-      className="rounded-full w-10 h-10"
-      src={props.EmployeeImage}
-      alt="employee"
-    />
-    <p>{props.Name}</p>
-  </div>
-);
+// const gridEmployeeProfile = (props) => (
+//   <div className="flex items-center gap-2">
+//     <img
+//       className="rounded-full w-10 h-10"
+//       src={props.EmployeeImage}
+//       alt="employee"
+//     />
+//     <p>{props.Name}</p>
+//   </div>
+// );
 
-const gridEmployeeCourseOffered = (props) => (
-  <div className="flex items-center justify-center gap-2">
-    {/* <GrLocation /> */}
-    <span>{props.CourseOffered}</span>
-  </div>
-);
+// const gridEmployeeCountry = (props) => (
+//   <div className="flex items-center justify-center gap-2">
+//     <GrLocation />
+//     <span>{props.Country}</span>
+//   </div>
+// );
 export const EditorData = () => (
   <div>
     <h3>
@@ -151,15 +182,15 @@ const customerGridImage = (props) => (
   </div>
 );
 
-const customerGridStatus = (props) => (
-  <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
-    <p
-      style={{ background: props.StatusBg }}
-      className="rounded-full h-3 w-3"
-    />
-    <p>{props.Status}</p>
-  </div>
-);
+// const customerGridStatus = (props) => (
+//   <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
+//     <p
+//       style={{ background: props.StatusBg }}
+//       className="rounded-full h-3 w-3"
+//     />
+//     <p>{props.Status}</p>
+//   </div>
+// );
 export const areaPrimaryXAxis = {
   valueType: 'DateTime',
   labelFormat: 'y',
@@ -429,7 +460,7 @@ export const customersGrid = [
     width: '130',
     format: 'yMd',
     textAlign: 'Center',
-    template: customerGridStatus,
+    // template: customerGridStatus,
   },
   {
     field: 'Weeks',
@@ -439,8 +470,8 @@ export const customersGrid = [
     textAlign: 'Center',
   },
   {
-    field: 'Students',
-    headerText: 'Students',
+    field: 'Budget',
+    headerText: 'Budget',
     width: '100',
     format: 'yMd',
     textAlign: 'Center',
@@ -471,47 +502,57 @@ export const employeesGrid = [
   },
   {
     headerText: 'Institute Name',
+    field: 'instituteName',
     width: '150',
-    template: gridEmployeeProfile,
+    // template: gridEmployeeProfile,
     textAlign: 'Center',
   },
-  { field: 'Name', headerText: '', width: '0', textAlign: 'Center' },
+  // { field: 'Name', headerText: '', width: '0', textAlign: 'Center' },
   {
-    field: 'Title',
-    headerText: 'Applications',
+    field: 'instituteCourse',
+    headerText: 'Course',
     width: '170',
     textAlign: 'Center',
   },
-  {
-    headerText: 'Course',
-    width: '120',
-    textAlign: 'Center',
-    template: gridEmployeeCourseOffered,
-  },
+  // {
+  //   headerText: 'Scholarship',
+  //   field: 'instituteScholarship',
+  //   width: '120',
+  //   textAlign: 'Center',
+  //   template: gridEmployeeCountry,
+  // },
 
   {
-    field: 'HireDate',
-    headerText: 'Application Date',
+    field: 'instituteRegister',
+    headerText: 'Registration Date',
     width: '135',
     format: 'yMd',
     textAlign: 'Center',
   },
-
   {
-    field: 'Status',
+    field: 'status',
     headerText: 'Status',
-    width: '120',
+    width: '130',
+    // format: 'yMd',
     textAlign: 'Center',
-    format: 'yMd',
-    template: customerGridStatus,
+    // template: customerGridStatus
   },
-
-  // { field: 'Status',
-  // headerText: 'Status',
-  // width: '130',
-  // format: 'yMd',
-  // textAlign: 'Center',
-  // template: customerGridStatus },
+  {
+    field: 'Edit',
+    headerText: 'Edit',
+    width: '70',
+    // format: 'yMd',
+    textAlign: 'Center',
+    template: gridEdit,
+  },
+  {
+    field: 'Delete',
+    headerText: 'Delete',
+    width: '70',
+    // format: 'yMd',
+    textAlign: 'Center',
+    template: gridDel,
+  },
 ];
 
 export const links = [
@@ -519,7 +560,7 @@ export const links = [
     title: 'Dashboard',
     links: [
       {
-        name: 'Admin Panel', // ecommerce
+        name: 'Admin Panel',
         icon: <RiContactsLine />,
       },
     ],
@@ -811,12 +852,12 @@ export const medicalproBranding = {
       desc: 'Oct 23, 2021',
     },
     {
-      title: 'Students',
-      desc: '98,500',
+      title: 'Budget',
+      desc: '$98,500',
     },
     {
-      title: 'Institutes',
-      desc: '63,000',
+      title: 'Expense',
+      desc: '$63,000',
     },
   ],
   teams: [
@@ -959,7 +1000,7 @@ export const customersData = [
     Status: 'Active',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Students: '$2.4k',
+    Budget: '$2.4k',
     Location: 'India',
   },
   {
@@ -973,7 +1014,7 @@ export const customersData = [
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Students: '$3.9k',
+    Budget: '$3.9k',
     Location: 'India',
   },
   {
@@ -986,7 +1027,7 @@ export const customersData = [
     CustomerImage: avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Students: '$24.5k',
+    Budget: '$24.5k',
     Location: 'USA',
   },
   {
@@ -999,7 +1040,7 @@ export const customersData = [
     CustomerImage: avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1012,7 +1053,7 @@ export const customersData = [
     CustomerImage: avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1024,7 +1065,7 @@ export const customersData = [
     Status: 'Active',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Students: '$2.4k',
+    Budget: '$2.4k',
     Location: 'India',
   },
   {
@@ -1038,7 +1079,7 @@ export const customersData = [
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Students: '$3.9k',
+    Budget: '$3.9k',
     Location: 'India',
   },
   {
@@ -1051,7 +1092,7 @@ export const customersData = [
     CustomerImage: avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Students: '$24.5k',
+    Budget: '$24.5k',
     Location: 'USA',
   },
   {
@@ -1064,7 +1105,7 @@ export const customersData = [
     CustomerImage: avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1077,7 +1118,7 @@ export const customersData = [
     CustomerImage: avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1089,7 +1130,7 @@ export const customersData = [
     Status: 'Active',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Students: '$2.4k',
+    Budget: '$2.4k',
     Location: 'India',
   },
   {
@@ -1103,7 +1144,7 @@ export const customersData = [
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Students: '$3.9k',
+    Budget: '$3.9k',
     Location: 'India',
   },
   {
@@ -1116,7 +1157,7 @@ export const customersData = [
     CustomerImage: avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Students: '$24.5k',
+    Budget: '$24.5k',
     Location: 'USA',
   },
   {
@@ -1129,7 +1170,7 @@ export const customersData = [
     CustomerImage: avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1142,7 +1183,7 @@ export const customersData = [
     CustomerImage: avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1154,7 +1195,7 @@ export const customersData = [
     Status: 'Active',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Students: '$2.4k',
+    Budget: '$2.4k',
     Location: 'India',
   },
   {
@@ -1168,7 +1209,7 @@ export const customersData = [
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Students: '$3.9k',
+    Budget: '$3.9k',
     Location: 'India',
   },
   {
@@ -1181,7 +1222,7 @@ export const customersData = [
     CustomerImage: avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Students: '$24.5k',
+    Budget: '$24.5k',
     Location: 'USA',
   },
   {
@@ -1194,7 +1235,7 @@ export const customersData = [
     CustomerImage: avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1207,7 +1248,7 @@ export const customersData = [
     CustomerImage: avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1219,7 +1260,7 @@ export const customersData = [
     Status: 'Active',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Students: '$2.4k',
+    Budget: '$2.4k',
     Location: 'India',
   },
   {
@@ -1233,7 +1274,7 @@ export const customersData = [
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Students: '$3.9k',
+    Budget: '$3.9k',
     Location: 'India',
   },
   {
@@ -1246,7 +1287,7 @@ export const customersData = [
     CustomerImage: avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Students: '$24.5k',
+    Budget: '$24.5k',
     Location: 'USA',
   },
   {
@@ -1259,7 +1300,7 @@ export const customersData = [
     CustomerImage: avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1272,7 +1313,7 @@ export const customersData = [
     CustomerImage: avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1284,7 +1325,7 @@ export const customersData = [
     Status: 'Active',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Students: '$2.4k',
+    Budget: '$2.4k',
     Location: 'India',
   },
   {
@@ -1298,7 +1339,7 @@ export const customersData = [
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Students: '$3.9k',
+    Budget: '$3.9k',
     Location: 'India',
   },
   {
@@ -1311,7 +1352,7 @@ export const customersData = [
     CustomerImage: avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Students: '$24.5k',
+    Budget: '$24.5k',
     Location: 'USA',
   },
   {
@@ -1324,7 +1365,7 @@ export const customersData = [
     CustomerImage: avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1337,7 +1378,7 @@ export const customersData = [
     CustomerImage: avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1349,7 +1390,7 @@ export const customersData = [
     Status: 'Active',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Students: '$2.4k',
+    Budget: '$2.4k',
     Location: 'India',
   },
   {
@@ -1363,7 +1404,7 @@ export const customersData = [
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Students: '$3.9k',
+    Budget: '$3.9k',
     Location: 'India',
   },
   {
@@ -1376,7 +1417,7 @@ export const customersData = [
     CustomerImage: avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Students: '$24.5k',
+    Budget: '$24.5k',
     Location: 'USA',
   },
   {
@@ -1389,7 +1430,7 @@ export const customersData = [
     CustomerImage: avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1402,7 +1443,7 @@ export const customersData = [
     CustomerImage: avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1414,7 +1455,7 @@ export const customersData = [
     Status: 'Active',
     StatusBg: '#8BE78B',
     Weeks: '40',
-    Students: '$2.4k',
+    Budget: '$2.4k',
     Location: 'India',
   },
   {
@@ -1428,7 +1469,7 @@ export const customersData = [
 
     StatusBg: '#8BE78B',
     Weeks: '11',
-    Students: '$3.9k',
+    Budget: '$3.9k',
     Location: 'India',
   },
   {
@@ -1441,7 +1482,7 @@ export const customersData = [
     CustomerImage: avatar4,
     StatusBg: '#FEC90F',
     Weeks: '19',
-    Students: '$24.5k',
+    Budget: '$24.5k',
     Location: 'USA',
   },
   {
@@ -1453,7 +1494,7 @@ export const customersData = [
     CustomerImage: avatar,
     StatusBg: '#8BE78B',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
   {
@@ -1465,7 +1506,7 @@ export const customersData = [
     CustomerImage: avatar2,
     StatusBg: 'red',
     Weeks: '34',
-    Students: '$16.5k',
+    Budget: '$16.5k',
     Location: 'USA',
   },
 ];
@@ -1476,7 +1517,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1486,7 +1527,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1496,7 +1537,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -1506,7 +1547,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1516,7 +1557,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1526,7 +1567,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1536,7 +1577,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1546,7 +1587,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1556,7 +1597,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1566,7 +1607,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -1576,7 +1617,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1586,7 +1627,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1596,7 +1637,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1606,7 +1647,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1616,7 +1657,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1626,7 +1667,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1636,7 +1677,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -1646,7 +1687,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1656,7 +1697,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1666,7 +1707,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1676,7 +1717,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1686,7 +1727,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1696,7 +1737,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1706,7 +1747,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -1716,7 +1757,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1726,7 +1767,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1736,7 +1777,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1746,7 +1787,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1756,7 +1797,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1766,7 +1807,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1776,7 +1817,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -1786,7 +1827,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1796,7 +1837,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1806,7 +1847,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1816,7 +1857,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1826,7 +1867,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1836,7 +1877,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1846,7 +1887,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -1856,7 +1897,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1866,7 +1907,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1876,7 +1917,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1886,7 +1927,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1896,7 +1937,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1906,7 +1947,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1916,7 +1957,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -1926,7 +1967,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1936,7 +1977,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1946,7 +1987,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -1956,7 +1997,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1966,7 +2007,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -1976,7 +2017,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -1986,7 +2027,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -1996,7 +2037,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -2006,7 +2047,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -2016,7 +2057,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -2026,7 +2067,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -2036,7 +2077,7 @@ export const employeesData = [
     Name: 'Nancy Davolio',
     Title: 'Sales Representative',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -2046,7 +2087,7 @@ export const employeesData = [
     Name: 'Nasimiyu Danai',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar3,
@@ -2056,7 +2097,7 @@ export const employeesData = [
     Name: 'Iulia Albu',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar4,
@@ -2066,7 +2107,7 @@ export const employeesData = [
     Name: 'Siegbert Gottfried',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -2076,7 +2117,7 @@ export const employeesData = [
     Name: 'Omar Darobe',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -2086,7 +2127,7 @@ export const employeesData = [
     Name: 'Penjani Inyene',
     Title: 'Marketing Head',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar,
@@ -2096,7 +2137,7 @@ export const employeesData = [
     Name: 'Miron Vitold',
     Title: 'HR',
     HireDate: '01/02/2021',
-    CourseOffered: 'USA',
+    Country: 'USA',
     Status: 'Complete',
     StatusBg: '#FB9678',
     EmployeeImage: avatar2,
@@ -3127,7 +3168,7 @@ export const stackedCustomSeries = [
     dataSource: stackedChartData[0],
     xName: 'x',
     yName: 'y',
-    name: 'Students',
+    name: 'Budget',
     type: 'StackingColumn',
     background: 'blue',
   },
@@ -3136,7 +3177,7 @@ export const stackedCustomSeries = [
     dataSource: stackedChartData[1],
     xName: 'x',
     yName: 'y',
-    name: 'Institutes',
+    name: 'Expense',
     type: 'StackingColumn',
     background: 'red',
   },
