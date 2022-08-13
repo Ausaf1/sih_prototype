@@ -55,7 +55,7 @@ exports.getInstitute = async (req, res, next) => {
         status: institute.status,
       };
     });
-    
+
     res.status(200).json({
       success: true,
       data: instituteArray,
@@ -66,11 +66,62 @@ exports.getInstitute = async (req, res, next) => {
   }
 };
 
-// const data = require("./dataSource.json")
+exports.updateInstitute = async (req, res, next) => {
+  const { id } = req.params;
+  const {
+    instituteId,
+    instituteName,
+    instituteCourse,
+    // instituteScholarship,
+    instituteRegister,
+    status,
+  } = req.body;
+  const institute = await Institute.findById({ _id: id });
+  if (!institute) {
+    return next(new ErrorResponse(`Institute not found`, 404));
+  }
+  institute.instituteId = instituteId;
+  institute.instituteName = instituteName;
+  institute.instituteCourse = instituteCourse;
+  // institute.instituteScholarship = instituteScholarship;
+  institute.instituteRegister = instituteRegister;
+  institute.status = status;
+  try {
+    await institute.save();
+    res.status(200).json({
+      success: true,
+      data: institute,
+    });
+  } catch (err) {
+    console.log(err);
+    return next(new ErrorResponse(`${err.message}`, 400));
+  }
+};
 
-// exports.getInstitute = async (req, res, next) => {
-//   return res.json({
-//     result : data,
-//     count : data.length,
-//   })
-// }
+exports.getParticularInstitute = async (req, res, next) => {
+  const { id } = req.params;
+  const institute = await Institute.findById({ _id: id });
+  if (!institute) {
+    return next(new ErrorResponse(`Institute not found`, 404));
+  }
+  res.status(200).json({
+    success: true,
+    data: institute,
+  });
+};
+
+exports.deleteInstitute = async (req, res, next) => {
+  console.log(req);
+  const { id } = req.params;
+  console.log(id);
+  const institute = await Institute.findByIdAndDelete({ _id: id });
+  console.log(institute);
+  if (!institute) {
+    return next(new ErrorResponse(`Institute not found`, 404));
+  }
+  res.status(200).json({
+    success: true,
+    data: institute,
+  });
+};
+

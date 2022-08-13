@@ -10,7 +10,7 @@ const instituteSchema = new mongoose.Schema(
       required: true,
       unique: true,
       trim: true,
-      minlength: 3,
+      minlength: 1,
       maxlength: 20,
     },
     password: {
@@ -32,7 +32,7 @@ const instituteSchema = new mongoose.Schema(
     },
     instituteScholarship: {
       type: String,
-      required: true,
+      // required: true,
       trim: true
     },
     instituteRegister: {
@@ -50,7 +50,7 @@ const instituteSchema = new mongoose.Schema(
     status: {
       type:String,
       default: "pending"
-    },
+    }
   },
   { timestamps: true }
 );

@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import {
   AiOutlineCalendar,
   AiOutlineAreaChart,
@@ -7,6 +9,7 @@ import {
 } from 'react-icons/ai';
 import {
   FiEdit,
+  FiDelete,
   FiPieChart,
   FiBarChart,
   FiCreditCard,
@@ -58,6 +61,34 @@ export const gridOrderStatus = (props) => (
   >
     {props.Status}
   </button>
+);
+const baseUrl = '/institute/update/';
+const getId = (props) => baseUrl + props.id;
+
+export const gridEdit = (props) => (
+  <Link to={getId(props)}>
+    <FiEdit className="text-gray-600 hover:text-gray-800" />
+  </Link>
+);
+// const baseUrll = '/institute/delete/';
+// const getIdd = (props) => {
+//   console.log(props);
+//   return props.id;
+// };
+
+const handleDeleteProperty = async (id) => {
+  try {
+    const res = axios.post(`/api/admin/institute/delete/${id}`);
+    window.location.reload();
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+  return null;
+};
+
+export const gridDel = (props) => (
+  <FiDelete onClick={() => handleDeleteProperty(props.id)} className="text-gray-600 hover:text-gray-800" />
 );
 
 export const kanbanGrid = [
@@ -505,6 +536,22 @@ export const employeesGrid = [
     // format: 'yMd',
     textAlign: 'Center',
     // template: customerGridStatus
+  },
+  {
+    field: 'Edit',
+    headerText: 'Edit',
+    width: '70',
+    // format: 'yMd',
+    textAlign: 'Center',
+    template: gridEdit,
+  },
+  {
+    field: 'Delete',
+    headerText: 'Delete',
+    width: '70',
+    // format: 'yMd',
+    textAlign: 'Center',
+    template: gridDel,
   },
 ];
 

@@ -10,8 +10,8 @@ const cors = require("cors");
 connectDB();
 
 
-// const corsOrigin = ['http://localhost:3000', 'http://localhost:3001'];
-// app.use(cors({ origin: corsOrigin, optionsSuccessStatus: 200 }));
+const corsOrigin = ['http://localhost:3000', 'http://localhost:3001'];
+app.use(cors({ origin: corsOrigin, optionsSuccessStatus: 200 }));
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth"));
