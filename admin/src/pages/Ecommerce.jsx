@@ -1,50 +1,21 @@
 import React from 'react';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 import { GoPrimitiveDot } from 'react-icons/go';
-<<<<<<< HEAD
-import { IoIosMore } from 'react-icons/io';
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { Stacked, Button, SparkLine, LineChart } from '../components';
-=======
 // import { IoIosMore } from 'react-icons/io';
 // import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
 import { Stacked, Button, SparkLine } from '../components';
->>>>>>> 0e556a1be755f3732ca48d826913dcdf1e511fd2
 import {
   earningData,
   SparklineAreaData,
   // ecomPieChartData,
   // medicalproBranding,
-<<<<<<< HEAD
-  dropdownData,
-  recentTransactions,
-  weeklyStats,
-=======
   // dropdownData,
   // recentTransactions,
   // weeklyStats,
->>>>>>> 0e556a1be755f3732ca48d826913dcdf1e511fd2
 } from '../data/dummy';
 import { useStateContext } from '../contexts/ContextProvider';
 // import product9 from '../data/product9.jpg';
 
-<<<<<<< HEAD
-const DropDown = ({ currentMode }) => (
-  <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
-    <DropDownListComponent
-      id="time"
-      fields={{ text: 'Time', value: 'Id' }}
-      style={{ border: 'none', color: currentMode === 'Dark' && 'white' }}
-      value="1"
-      dataSource={dropdownData}
-      popupHeight="220px"
-      popupWidth="120px"
-    />
-  </div>
-);
-=======
 // const DropDown = ({ currentMode }) => (
 //   <div className="w-28 border-1 border-color px-2 py-1 rounded-md">
 //     <DropDownListComponent
@@ -58,24 +29,10 @@ const DropDown = ({ currentMode }) => (
 //     />
 //   </div>
 // );
->>>>>>> 0e556a1be755f3732ca48d826913dcdf1e511fd2
 
 const Ecommerce = () => {
   const { currentColor, currentMode } = useStateContext();
-  const printRef = React.useRef();
 
-  const handleDownloadPdf = async () => {
-    const element = printRef.current;
-    const canvas = await html2canvas(element);
-    const data = canvas.toDataURL('image/png');
-    // eslint-disable-next-line new-cap
-    const pdf = new jsPDF();
-    const imgProperties = pdf.getImageProperties(data);
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (imgProperties.height * pdfWidth) / imgProperties.width;
-    pdf.addImage(data, 'PNG', 0, 0, pdfWidth, pdfHeight);
-    pdf.save('print.pdf');
-  };
   return (
     <div className="mt-24">
       <div className="flex flex-wrap lg:flex-nowrap justify-center ">
@@ -127,22 +84,22 @@ const Ecommerce = () => {
         </div>
       </div>
 
-      <div className="flex gap-10 flex-wrap justify-center" ref={printRef}>
+      <div className="flex gap-10 flex-wrap justify-center">
         <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg m-3 p-4 rounded-2xl md:w-780  ">
           <div className="flex justify-between">
-            <p className="font-semibold text-xl">Updates</p>
+            <p className="font-semibold text-xl">Revenue Updates</p>
             <div className="flex items-center gap-4">
               <p className="flex items-center gap-2 text-gray-600 hover:drop-shadow-xl">
                 <span>
                   <GoPrimitiveDot />
                 </span>
-                <span>Students</span>
+                <span>Expense</span>
               </p>
               <p className="flex items-center gap-2 text-green-400 hover:drop-shadow-xl">
                 <span>
                   <GoPrimitiveDot />
                 </span>
-                <span>Institutes</span>
+                <span>Budget</span>
               </p>
             </div>
           </div>
@@ -150,17 +107,17 @@ const Ecommerce = () => {
             <div className=" border-r-1 border-color m-4 pr-10">
               <div>
                 <p>
-                  <span className="text-3xl font-semibold">93,438</span>
+                  <span className="text-3xl font-semibold">$93,438</span>
                   <span className="p-1.5 hover:drop-shadow-xl cursor-pointer rounded-full text-white bg-green-400 ml-3 text-xs">
                     23%
                   </span>
                 </p>
-                <p className="text-gray-500 mt-1">Students</p>
+                <p className="text-gray-500 mt-1">Budget</p>
               </div>
               <div className="mt-8">
-                <p className="text-3xl font-semibold">48,487</p>
+                <p className="text-3xl font-semibold">$48,487</p>
 
-                <p className="text-gray-500 mt-1">Institutes</p>
+                <p className="text-gray-500 mt-1">Expense</p>
               </div>
 
               <div className="mt-5">
@@ -175,19 +132,12 @@ const Ecommerce = () => {
                 />
               </div>
               <div className="mt-10">
-                <button
-                  onClick={handleDownloadPdf}
-                  type="button"
-                  style={{
-                    color: 'white',
-                    backgroundColor: currentColor,
-                    borderRadius: '10px',
-                    width: '100%',
-                    height: '40px',
-                  }}
-                >
-                  Download Report
-                </button>
+                <Button
+                  color="white"
+                  bgColor={currentColor}
+                  text="Download Report"
+                  borderRadius="10px"
+                />
               </div>
             </div>
             <div>
@@ -202,7 +152,6 @@ const Ecommerce = () => {
           >
             <div className="flex justify-between items-center ">
               <p className="font-semibold text-white text-2xl">Earnings</p>
-
               <div>
                 <p className="text-2xl text-white font-semibold mt-8">
                   $63,448.78
@@ -210,7 +159,6 @@ const Ecommerce = () => {
                 <p className="text-gray-200">Monthly revenue</p>
               </div>
             </div>
-
             <div className="mt-4">
               <SparkLine
                 currentColor={currentColor}
@@ -223,13 +171,11 @@ const Ecommerce = () => {
               />
             </div>
           </div>
-
           <div className="bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl md:w-400 p-8 m-3 flex justify-center items-center gap-10">
             <div>
               <p className="text-2xl font-semibold ">$43,246</p>
               <p className="text-gray-400">Yearly sales</p>
             </div>
-
             <div className="w-40">
               <Pie
                 id="pie-chart"
@@ -280,7 +226,6 @@ const Ecommerce = () => {
                 borderRadius="10px"
               />
             </div>
-
             <p className="text-gray-400 text-sm">36 Recent Transactions</p>
           </div>
         </div>
@@ -306,7 +251,6 @@ const Ecommerce = () => {
               <IoIosMore />
             </button>
           </div>
-
           <div className="mt-10 ">
             {weeklyStats.map((item) => (
               <div
@@ -326,7 +270,6 @@ const Ecommerce = () => {
                     <p className="text-sm text-gray-400">{item.desc}</p>
                   </div>
                 </div>
-
                 <p className={`text-${item.pcColor}`}>{item.amount}</p>
               </div>
             ))}
@@ -342,11 +285,7 @@ const Ecommerce = () => {
               />
             </div>
           </div>
-<<<<<<< HEAD
-        </div>
-=======
         </div> */}
->>>>>>> 0e556a1be755f3732ca48d826913dcdf1e511fd2
         {/* <div className="w-400 bg-white dark:text-gray-200 dark:bg-secondary-dark-bg rounded-2xl p-6 m-3">
           <div className="flex justify-between">
             <p className="text-xl font-semibold">MedicalPro Branding</p>
@@ -360,7 +299,6 @@ const Ecommerce = () => {
           <p className="text-xs cursor-pointer hover:drop-shadow-xl font-semibold rounded-lg w-24 bg-orange-400 py-0.5 px-2 text-gray-200 mt-10">
             16 APR, 2021
           </p>
-
           <div className="flex gap-4 border-b-1 border-color mt-6">
             {medicalproBranding.data.map((item) => (
               <div
@@ -374,7 +312,6 @@ const Ecommerce = () => {
           </div>
           <div className="border-b-1 border-color pb-4 mt-2">
             <p className="text-md font-semibold mb-2">Teams</p>
-
             <div className="flex gap-4">
               {medicalproBranding.teams.map((item) => (
                 <p
@@ -409,7 +346,6 @@ const Ecommerce = () => {
                 borderRadius="10px"
               />
             </div>
-
             <p className="text-gray-400 text-sm">36 Recent Transactions</p>
           </div>
         </div> */}
