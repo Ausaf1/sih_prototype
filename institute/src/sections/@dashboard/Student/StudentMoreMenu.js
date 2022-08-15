@@ -7,7 +7,7 @@ import Iconify from '../../../components/Iconify';
 
 // ----------------------------------------------------------------------
 
-export default function UserMoreMenu() {
+export default function StudentMoreMenu() {
   const ref = useRef(null);
   const [isOpen, setIsOpen] = useState(false);
 

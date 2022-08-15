@@ -12,8 +12,23 @@ const navConfig = [
     icon: getIcon('eva:pie-chart-2-fill'),
   },
   {
-    title: 'user',
-    path: '/dashboard/user',
+    title: 'student list',
+    path: '/dashboard/student',
+    icon: getIcon('eva:people-fill'),
+  },
+  {
+    title: 'Approved student list',
+    path: '/dashboard/approved',
+    icon: getIcon('eva:people-fill'),
+  },
+  {
+    title: 'Rejected student list',
+    path: '/dashboard/rejected',
+    icon: getIcon('eva:people-fill'),
+  },
+  {
+    title: 'Pending student list',
+    path: '/dashboard/pending',
     icon: getIcon('eva:people-fill'),
   },
   {

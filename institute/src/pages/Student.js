@@ -24,7 +24,7 @@ import Label from '../components/Label';
 import Scrollbar from '../components/Scrollbar';
 import Iconify from '../components/Iconify';
 import SearchNotFound from '../components/SearchNotFound';
-import { UserListHead, UserListToolbar, UserMoreMenu } from '../sections/@dashboard/user';
+import { StudentListHead, StudentListToolbar, StudentMoreMenu } from '../sections/@dashboard/Student';
 // mock
 import USERLIST from '../_mock/user';
 
@@ -133,24 +133,24 @@ export default function User() {
   const isUserNotFound = filteredUsers.length === 0;
 
   return (
-    <Page title="User">
+    <Page title="Student List">
       <Container>
         <Stack direction="row" alignItems="center" justifyContent="space-between" mb={5}>
           <Typography variant="h4" gutterBottom>
-            User
+            Student List
           </Typography>
           <Button variant="contained" component={RouterLink} to="#" startIcon={<Iconify icon="eva:plus-fill" />}>
-            New User
+            New Student
           </Button>
         </Stack>
 
         <Card>
-          <UserListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
+          <StudentListToolbar numSelected={selected.length} filterName={filterName} onFilterName={handleFilterByName} />
 
           <Scrollbar>
             <TableContainer sx={{ minWidth: 800 }}>
               <Table>
-                <UserListHead
+                <StudentListHead
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
@@ -194,7 +194,7 @@ export default function User() {
                         </TableCell>
 
                         <TableCell align="right">
-                          <UserMoreMenu />
+                          <StudentMoreMenu />
                         </TableCell>
                       </TableRow>
                     );

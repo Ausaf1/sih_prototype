@@ -1,9 +1,9 @@
 // ----------------------------------------------------------------------
 
 const account = {
-  displayName: 'Jaydon Frankie',
+  displayName: 'Heik Belesna College',
   email: 'demo@minimals.cc',
-  photoURL: '/static/mock-images/avatars/avatar_default.jpg',
+  photoURL: 'https://static.vecteezy.com/system/resources/previews/006/470/647/original/university-education-logo-design-template-free-vector.jpg'
 };
 
 export default account;
