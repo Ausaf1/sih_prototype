@@ -6,7 +6,7 @@ const officerModel = require("./models/User");
 const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const connectDB = require("./config/database");
-const instituteModel=require("./models/Institute");
+const instituteModel = require("./models/Institute");
 connectDB();
 
 console.log(process.env.ADMIN_PASSWORD);
@@ -17,10 +17,10 @@ const seedProducts = [
     password: process.env.ADMIN_PASSWORD,
   },
 ];
-const seedInstitute=[
+const seedInstitute = [
   {
-    instituteId:"Great-weiwei",
-    password:"weiweiisbest",
+    instituteId: "Great-weiwei",
+    password: "weiweiisbest",
   }
 ]
 const seedDB = async () => {
@@ -32,7 +32,7 @@ const seedDB = async () => {
     console.log(err);
   }
 };
-const seedIDB=async()=>{
+const seedIDB = async () => {
   try {
     // await officerModel.deleteMany({});
     await instituteModel.create(seedInstitute);

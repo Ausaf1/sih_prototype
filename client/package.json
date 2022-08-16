@@ -4,6 +4,7 @@
   "proxy": "http://127.0.0.1:5000",
   "private": true,
   "dependencies": {
+    "@mui/material": "^5.9.3",
     "axios": "^0.27.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.4.0",

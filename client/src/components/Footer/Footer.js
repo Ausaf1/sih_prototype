@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
 import "./Footer.css";
 function Footer() {
   const [user, setUser] = useState("");
@@ -26,7 +28,8 @@ function Footer() {
                   <td>terms and condition</td>
                 </tr>
                 <tr>
-                  <td>disclaimer</td>
+                  <td>
+                    <Link className="disclaimer" to="/AboutUS">disclaimer</Link></td>
                   <td>Hyperlink policy</td>
                   <td>Sitemap</td>
                 </tr>

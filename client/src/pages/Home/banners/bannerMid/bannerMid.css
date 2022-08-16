@@ -1,0 +1,63 @@
+/*primary:- 94B49F# */
+/* secondary color:CEE5D0 */
+/* tertiary color:FCF8E8 */
+/* ternary color:ECB390 */
+
+.bannerMid {
+  /* max-width: 80%; */
+  height: 350px;
+  background-color: #94b49f;
+  display: flex;
+  text-align: center;
+  margin: 40px auto;
+  box-sizing: border-box;
+  border-radius: 15px;
+  width: 80%;
+}
+
+.container {
+  /* max-width: 20%; */
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  font-size: 1.2vw;
+  justify-content: center;
+  /* max-width: 10%; */
+}
+
+.heading {
+  padding: 0%;
+  margin: 0;
+}
+
+.content1 {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+
+  /* max-width: 900px; */
+}
+
+.box1 {
+  margin: 20px 7px;
+  padding-right: 10px;
+  border-right: 1px solid rgb(216, 216, 239);
+  width: 70%;
+  font-size: 1.2vw;
+}
+
+.box2 {
+  margin: 20px 7px;
+  width: 70%;
+  font-size: 1.2vw;
+}
+
+.nums {
+  font-size: 1.5vw;
+}
+.description {
+  line-height: 1;
+}

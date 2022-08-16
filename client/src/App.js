@@ -13,8 +13,9 @@ import ForgotPassword from "./pages/ForgotPassword/ForgotPassword";
 import ResetPassword from "./pages/ResetPassword/ResetPassword";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import PrivateScreen from "./components/screens/PrivateScreen";
-import InstituteLanding from "./components/screens/InstituteLanding.js";
+import InstituteScreen from "./components/screens/InstituteScreen.js";
 import Footer from "./components/Footer/Footer";
+import InstituteRoute from "./components/routing/InstituteRoute";
 function App() {
   return (
     <Router>
@@ -23,6 +24,9 @@ function App() {
         <Route exact path="/officer/dashboard" element={<PrivateRoute />}>
           <Route path="/officer/dashboard" element={<PrivateScreen />} />
         </Route>
+        <Route exact path="/institute/dashboard" element={<InstituteRoute />}>
+          <Route path="/institute/dashboard" element={<InstituteScreen />} />
+        </Route>
         <Route path="/" exact element={<Home />} />
         <Route path="/AboutUs" element={<AboutUs />} />
         <Route path="/Services" element={<Services />} />
@@ -30,7 +34,7 @@ function App() {
         <Route path="/importantDocuments" element={<ImportantDocuments />} />
         <Route path="/instituteLogin" element={<InstituteLogin />} />
         <Route path="/officerLogin" element={<OfficerLogin />} />
-        <Route path="/institute/dashboard" element={<InstituteLanding />} />
+        {/* <Route path="/institute/dashboard" element={<InstituteScreen />} /> */}
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/passwordreset/:resetToken" element={<ResetPassword />} />
       </Routes>

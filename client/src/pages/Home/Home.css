@@ -1,5 +1,6 @@
-.container {
+.home-container {
   display: flex;
+  flex-direction: row;
 }
 
 .column-1 {
@@ -7,17 +8,65 @@
   flex-basis: 70%;
 }
 
+#top {
+  border-radius: 25px 25px 0 0;
+  box-sizing: border-box;
+  height: 100px;
+  width: 100%;
+  background-color: rgb(116, 113, 113);
+  position: relative;
+  padding: 40px;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+}
+p {
+  margin: 20px;
+  /* font-weight: 200; */
+  font-size: 110%;
+}
+h3 {
+  text-align: center;
+  font-size: 150%;
+  margin-bottom: 25px;
+}
+.banner-bootom-text {
+  text-align: center;
+}
+hr {
+  width: 90%;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+img {
+  width: 35px;
+  height: 35px;
+  align-items: center;
+  text-align: center;
+  margin-right: 10px;
+  margin-top: 20px;
+}
+
+#heading {
+  text-align: center;
+  font-size: 2em;
+  color: black;
+  margin: 20px 0 30px;
+}
 .box {
-  background-color: rgb(245, 215, 160);
-  padding: 10px;
-  border-radius: 12px;
+  /* background-color: rgb(245, 215, 160); */
+  /* padding: 10px; */
+  border-radius: 29px;
+
   border: 2px solid rgb(116, 113, 113);
   margin: 1rem;
   box-shadow: 1px 1px 1px #000;
+  box-shadow: none;
 }
 
 @media only screen and (max-width: 900px) {
-  .container {
+  .home-container {
     /* it place the items in vertical direction */
     flex-direction: column;
     /* margin: 1rem; */
