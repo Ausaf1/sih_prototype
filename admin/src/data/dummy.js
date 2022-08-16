@@ -82,7 +82,7 @@ const handleDeleteProperty = async (id) => {
     window.location.reload();
     return res;
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
   return null;
 };

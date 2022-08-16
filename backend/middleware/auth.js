@@ -3,6 +3,10 @@ const Officer = require("../models/User");
 const Institute =require("../models/Institute")
 const ErrorResponse = require("../utils/errorResponse");
 
+require("dotenv").config({
+  path: "backend/.env",
+});
+
 exports.protect = async (req, res, next) => {
   let token;
   if (
@@ -42,7 +46,9 @@ exports.protects = async (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.JWT_SECRET_2);
+    // console.log(process.env.JWT_SECRETT);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    // console.log(decoded);
     const user = await Institute.findById(decoded.id);
     if (!user) {
       return next(new ErrorResponse("No User found with this id", 404));

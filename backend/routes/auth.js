@@ -6,4 +6,5 @@ router.route("/officerLogin").post(login);
 router.route("/forgot-password").post(forgotPassword);
 router.route("/reset-password/:resetToken").post(resetPassword);
 router.route("/instituteLogin").post(ilogin);
+
 module.exports = router;

@@ -1,4 +1,4 @@
-// routes
+// import 'bootstrap/dist/css/bootstrap.css';
 import Router from './routes';
 // theme
 import ThemeProvider from './theme';
@@ -10,10 +10,12 @@ import { BaseOptionChartStyle } from './components/chart/BaseOptionChart';
 
 export default function App() {
   return (
-    <ThemeProvider>
-      <ScrollToTop />
-      <BaseOptionChartStyle />
-      <Router />
-    </ThemeProvider>
+    <>
+      <ThemeProvider>
+        <ScrollToTop />
+        <BaseOptionChartStyle />
+        <Router />
+      </ThemeProvider>
+    </>
   );
 }

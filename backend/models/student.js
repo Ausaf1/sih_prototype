@@ -3,59 +3,58 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 
-const instituteSchema = new mongoose.Schema(
+const studentSchema = new mongoose.Schema(
   {
-    instituteId: {
+    studentName: {
+      type: String,
+      ref: "instituteId",
+      required: true,
+    },
+    email: {
       type: String,
       required: true,
       unique: true,
-      trim: true,
-      minlength: 1,
-      maxlength: 20,
     },
-    password: {
+    studentCourse: {
       type: String,
       required: true,
-      minlength: 6,
-      maxlength: 20,
-      select: false,
+      unique: true,
     },
-    instituteName: {
+    phoneNumber: {
       type: String,
       required: true,
-      trim: true
+      unique: true,
     },
-    instituteCourse: {
+    marksheet10th: {
       type: String,
       required: true,
-      trim: true
+      unique: true,
     },
-    instituteScholarship: {
-      type: String,
-      // required: true,
-      trim: true
-    },
-    instituteRegister: {
+    marksheet12th: {
       type: String,
       required: true,
-      trim: true
+      unique: true,
     },
-    password :{
+    incomeCertificate: {
       type: String,
       required: true,
-      minlength: 6,
-      maxlength: 20,
-      select: false,
+      unique: true,
     },
-    status: {
-      type:String,
-      default: "pending"
-    }
+    domicileCertificate: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    aadharCard: {
+      type: String,
+      required: true,
+      unique: true,
+    },
   },
   { timestamps: true }
 );
 
-instituteSchema.pre("save", async function (next) {
+studentSchema.pre("save", async function (next) {
   if (!this.isModified("password")) {
     next();
   }
@@ -64,17 +63,17 @@ instituteSchema.pre("save", async function (next) {
   next();
 });
 
-instituteSchema.methods.matchPassword = async function (password) {
+studentSchema.methods.matchPassword = async function (password) {
   return await bcrypt.compare(password, this.password);
 };
 
-instituteSchema.methods.getSignedToken = function () {
+studentSchema.methods.getSignedToken = function () {
   return jwt.sign({ id: this._id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRE,
   });
 };
 
-instituteSchema.methods.getResetPasswordToken = function () {
+studentSchema.methods.getResetPasswordToken = function () {
   const resetToken = crypto.randomBytes(20).toString("hex");
 
   this.resetPasswordToken = crypto
@@ -86,6 +85,6 @@ instituteSchema.methods.getResetPasswordToken = function () {
   return resetToken;
 };
 
-const Institute = mongoose.model("Institute", instituteSchema);
+const student = mongoose.model("student", studentSchema);
 
-module.exports = Institute;
+module.exports = student;

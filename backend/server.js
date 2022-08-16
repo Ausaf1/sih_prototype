@@ -5,9 +5,13 @@ const express = require("express");
 const app = express();
 const connectDB = require("./config/database");
 const errorHandler = require("./middleware/error");
+const cors = require("cors");
 
 connectDB();
 
+
+const corsOrigin = ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002"];
+app.use(cors({ origin: corsOrigin, optionsSuccessStatus: 200 }));
 app.use(express.json());
 
 app.use("/api/auth", require("./routes/auth"));

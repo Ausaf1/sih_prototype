@@ -1,5 +1,12 @@
 {
   "root": true,
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
   "env": {
     "browser": true,
     "node": true
@@ -13,7 +20,12 @@
   "plugins": [
     "react",
     "react-hooks",
-    "prettier"
+    "prettier",
+    "jsx",
+    "jsonc",
+    "import",
+    "react-native",
+    "react-native-web"
   ],
   "parser": "@babel/eslint-parser",
   "parserOptions": {

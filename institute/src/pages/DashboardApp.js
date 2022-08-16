@@ -1,7 +1,9 @@
 import { faker } from '@faker-js/faker';
+import React, { useState, useEffect } from 'react';
 // @mui
 import { useTheme } from '@mui/material/styles';
 import { Grid, Container, Typography } from '@mui/material';
+import axios from 'axios';
 // components
 import Page from '../components/Page';
 import Iconify from '../components/Iconify';
@@ -17,15 +19,44 @@ import {
   AppCurrentSubject,
   AppConversionRates,
 } from '../sections/@dashboard/app';
+import  ModalForm  from '../components/ModalForm';
 
 // ----------------------------------------------------------------------
 
 export default function DashboardApp() {
   const theme = useTheme();
 
+  //  useParams
+  // const { id } = useParams();
+  // console.log(id);
+  // const [data, setData] = useState([]);
+  // const [error, setError] = useState(null);
+  // // const [instituteId, setInstituteId] = useState(null);
+  // const [instituteName, setInstituteName] = useState(null);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     const config = {
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //     };
+  //     try {
+  //       const { data } = await axios.get(`/api/admin/institute/${id}`, config);
+  //       // console.log(data);
+  //       setData(data);
+  //       setInstituteName(data.data.name);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     }
+  //   };
+  //   fetchData();
+  // }, [id]);
+
   return (
     <Page title="Dashboard">
       <Container maxWidth="xl">
+        <ModalForm />
         <Typography variant="h4" sx={{ mb: 5 }}>
           Hi, Welcome back
         </Typography>
