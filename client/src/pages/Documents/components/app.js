@@ -20,7 +20,7 @@ function App() {
         <div>
             <h1 className='heading'>Important Documents</h1>
             <Card
-                name="scheme"
+                name="Scheme"
                 imgURL="https://cdn-icons-png.flaticon.com/512/888/888979.png"
                 phone="Download the document for more information"
                 email="sadhasjk@gmail.com"

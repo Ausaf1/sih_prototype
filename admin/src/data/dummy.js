@@ -3,14 +3,10 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {
   AiOutlineCalendar,
-  AiOutlineAreaChart,
-  AiOutlineBarChart,
-  AiOutlineStock,
 } from 'react-icons/ai';
 import {
   FiEdit,
   FiDelete,
-  FiPieChart,
   FiBarChart,
   FiCreditCard,
   FiStar,
@@ -18,18 +14,18 @@ import {
 } from 'react-icons/fi';
 import {
   BsKanban,
-  BsBarChart,
   BsCurrencyDollar,
   BsShield,
   BsChatLeft,
 } from 'react-icons/bs';
-import { BiColorFill } from 'react-icons/bi';
+import { GrView } from 'react-icons/gr';
 import { IoMdContacts } from 'react-icons/io';
-import { RiContactsLine, RiStockLine } from 'react-icons/ri';
+import { RiContactsLine } from 'react-icons/ri';
 import { MdOutlineSupervisorAccount } from 'react-icons/md';
 // import { HiOutlineRefresh } from 'react-icons/hi';
 import { TiTick } from 'react-icons/ti';
-import { GiLouvrePyramid } from 'react-icons/gi';
+// eslint-disable-next-line import/no-cycle
+// import { selectsdt } from '../pages/Customers';
 // import { GrLocation } from 'react-icons/gr';
 import avatar from './avatar.jpg';
 import avatar2 from './avatar2.jpg';
@@ -43,11 +39,11 @@ import product5 from './product5.jpg';
 import product6 from './product6.jpg';
 import product7 from './product7.jpg';
 
-export const gridOrderImage = (props) => (
+export const gridOrderImage = () => (
   <div>
     <img
       className="rounded-xl h-20 md:ml-3"
-      src={props.ProductImage}
+      src="https://via.placeholder.com/150"
       alt="order-item"
     />
   </div>
@@ -70,11 +66,6 @@ export const gridEdit = (props) => (
     <FiEdit className="text-gray-600 hover:text-gray-800" />
   </Link>
 );
-// const baseUrll = '/institute/delete/';
-// const getIdd = (props) => {
-//   console.log(props);
-//   return props.id;
-// };
 
 const handleDeleteProperty = async (id) => {
   try {
@@ -91,6 +82,14 @@ export const gridDel = (props) => (
   <FiDelete onClick={() => handleDeleteProperty(props.id)} className="text-gray-600 hover:text-gray-800" />
 );
 
+const baseUrlll = '/admin/student/';
+const getstudent = (props) => baseUrlll + props.id;
+
+export const gridDetails = (props) => (
+  <Link to={getstudent(props)}>
+    <GrView className="text-gray-600 hover:text-gray-800" />
+  </Link>
+);
 export const kanbanGrid = [
   { headerText: 'To Do', keyField: 'Open', allowToggle: true },
 
@@ -168,21 +167,21 @@ export const EditorData = () => (
     </h3>
   </div>
 );
-const customerGridImage = (props) => (
-  <div className="image flex gap-4">
-    <img
-      className="rounded-full w-10 h-10"
-      src={props.CustomerImage}
-      alt="employee"
-    />
-    <div>
-      <p>{props.CustomerName}</p>
-      <p>{props.CustomerEmail}</p>
-    </div>
-  </div>
-);
+// const customerGridImage = (props) => (
+//   <div className="image flex gap-4">
+//     <img
+//       className="rounded-full w-10 h-10"
+//       src={props.CustomerImage}
+//       alt="employee"
+//     />
+//     <div>
+//       <p>{props.CustomerName}</p>
+//       <p>{props.CustomerEmail}</p>
+//     </div>
+//   </div>
+// );
 
-// const customerGridStatus = (props) => (
+// // const customerGridStatus = (props) => (
 //   <div className="flex gap-2 justify-center items-center text-gray-700 capitalize">
 //     <p
 //       style={{ background: props.StatusBg }}
@@ -439,65 +438,83 @@ export const LinePrimaryYAxis = {
   majorTickLines: { width: 0 },
   minorTickLines: { width: 0 },
 };
+// const baseUrllll = '/student/select';
+// export const getstudentt = (props) => baseUrllll + props.id;
+// export const selectsdt = (props) => (
+//   <input type="checkbox" checked={props.checked} onChange={props.onChange} />
+// );
 
-export const customersGrid = [
+export const studentGrid = [
   { type: 'checkbox', width: '50' },
   {
-    headerText: 'Name',
-    width: '150',
-    template: customerGridImage,
-    textAlign: 'Center',
-  },
-  {
-    field: 'ProjectName',
-    headerText: 'Project Name',
+    field: 'studentName',
+    headerText: 'Student Name',
     width: '150',
     textAlign: 'Center',
   },
   {
-    field: 'Status',
-    headerText: 'Status',
-    width: '130',
+    field: 'instituteName',
+    headerText: 'Institute Name',
+    width: '150',
     format: 'yMd',
     textAlign: 'Center',
     // template: customerGridStatus,
   },
+
   {
-    field: 'Weeks',
-    headerText: 'Weeks',
-    width: '100',
+    field: 'email',
+    headerText: 'Email Id',
+    width: '150',
     format: 'C2',
     textAlign: 'Center',
   },
   {
-    field: 'Budget',
-    headerText: 'Budget',
-    width: '100',
+    field: 'phoneNumber',
+    headerText: 'Contact No.',
+    width: '120',
     format: 'yMd',
     textAlign: 'Center',
   },
 
   {
-    field: 'Location',
-    headerText: 'Location',
-    width: '150',
+    field: 'studentCourse',
+    headerText: 'Course',
+    width: '120',
     textAlign: 'Center',
   },
 
   {
-    field: 'CustomerID',
-    headerText: 'Customer ID',
-    width: '120',
+    field: 'Profile',
+    headerText: 'View',
+    width: '100',
     textAlign: 'Center',
-    isPrimaryKey: true,
+    template: gridDetails,
   },
 ];
 
-export const employeesGrid = [
+const baseUrllll = '/admin/getinstitute/';
+const getinstitute = (props) => baseUrllll + props.id;
+
+export const gridIDetails = (props) => (
+  <Link to={getinstitute(props)}>
+    <GrView className="text-gray-600 hover:text-gray-800" />
+  </Link>
+);
+
+const baseUrlllll = '/admin/Student%20List/';
+const getstudentlist = (props) => baseUrlllll + props.instituteName;
+
+export const gridView = (props) => (
+  <Link to={getstudentlist(props)}>
+    <RiContactsLine className="text-gray-600 hover:text-gray-800" />
+  </Link>
+);
+
+export const instituteGrid = [
   {
     field: 'InstituteId',
     headerText: 'Institute ID',
-    width: '125',
+    width: '70',
     textAlign: 'Center',
   },
   {
@@ -511,7 +528,7 @@ export const employeesGrid = [
   {
     field: 'instituteCourse',
     headerText: 'Course',
-    width: '170',
+    width: '150',
     textAlign: 'Center',
   },
   // {
@@ -525,14 +542,14 @@ export const employeesGrid = [
   {
     field: 'instituteRegister',
     headerText: 'Registration Date',
-    width: '135',
+    width: '100',
     format: 'yMd',
     textAlign: 'Center',
   },
   {
     field: 'status',
     headerText: 'Status',
-    width: '130',
+    width: '100',
     // format: 'yMd',
     textAlign: 'Center',
     // template: customerGridStatus
@@ -544,6 +561,21 @@ export const employeesGrid = [
     // format: 'yMd',
     textAlign: 'Center',
     template: gridEdit,
+  },
+  {
+    field: 'IDetails',
+    headerText: 'View',
+    width: '70',
+    textAlign: 'Center',
+    template: gridIDetails,
+  },
+  {
+    field: 'list',
+    headerText: 'StudentList',
+    width: '70',
+    // format: 'yMd',
+    textAlign: 'Center',
+    template: gridView,
   },
   {
     field: 'Delete',
@@ -577,10 +609,10 @@ export const links = [
         name: 'Institute List',
         icon: <IoMdContacts />,
       },
-      {
-        name: 'Student List', // customers
-        icon: <IoMdContacts />,
-      },
+      // {
+      //   name: 'Student List', // customers
+      //   icon: <IoMdContacts />,
+      // },
     ],
   },
   {
@@ -597,48 +629,6 @@ export const links = [
       {
         name: 'editor',
         icon: <FiEdit />,
-      },
-      {
-        name: 'color-picker',
-        icon: <BiColorFill />,
-      },
-    ],
-  },
-  {
-    title: 'Charts',
-    links: [
-      {
-        name: 'line',
-        icon: <AiOutlineStock />,
-      },
-      {
-        name: 'area',
-        icon: <AiOutlineAreaChart />,
-      },
-
-      {
-        name: 'bar',
-        icon: <AiOutlineBarChart />,
-      },
-      {
-        name: 'pie',
-        icon: <FiPieChart />,
-      },
-      {
-        name: 'financial',
-        icon: <RiStockLine />,
-      },
-      {
-        name: 'color-mapping',
-        icon: <BsBarChart />,
-      },
-      {
-        name: 'pyramid',
-        icon: <GiLouvrePyramid />,
-      },
-      {
-        name: 'stacked',
-        icon: <AiOutlineBarChart />,
       },
     ],
   },
@@ -940,7 +930,8 @@ export const userProfileData = [
   },
 ];
 
-export const ordersGrid = [
+export const selectedGrid = [
+  { type: 'checkbox', width: '50' },
   {
     headerText: 'Image',
     template: gridOrderImage,
@@ -948,45 +939,44 @@ export const ordersGrid = [
     width: '120',
   },
   {
-    field: 'OrderItems',
-    headerText: 'Item',
+    field: 'studentName',
+    headerText: 'Student Name',
     width: '150',
     editType: 'dropdownedit',
     textAlign: 'Center',
   },
   {
-    field: 'CustomerName',
-    headerText: 'Customer Name',
+    field: 'instituteName',
+    headerText: 'Institute Name',
     width: '150',
     textAlign: 'Center',
   },
   {
-    field: 'TotalAmount',
-    headerText: 'Total Amount',
+    field: 'studentCourse',
+    headerText: 'Course',
+    width: '120',
+    textAlign: 'Center',
+  },
+  {
+    field: 'email',
+    headerText: 'Email Id',
     format: 'C2',
     textAlign: 'Center',
     editType: 'numericedit',
     width: '150',
   },
   {
-    headerText: 'Status',
-    template: gridOrderStatus,
-    field: 'OrderItems',
+    headerText: 'Payment',
+    field: 'status',
     textAlign: 'Center',
     width: '120',
   },
   {
-    field: 'OrderID',
-    headerText: 'Order ID',
-    width: '120',
+    field: 'Profile',
+    headerText: 'View',
+    width: '100',
     textAlign: 'Center',
-  },
-
-  {
-    field: 'Location',
-    headerText: 'Location',
-    width: '150',
-    textAlign: 'Center',
+    template: gridDetails,
   },
 ];
 

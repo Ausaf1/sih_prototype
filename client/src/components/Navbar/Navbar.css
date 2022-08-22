@@ -14,6 +14,7 @@
   cursor: pointer;
   text-decoration: none;
   font-size: 2rem;
+
 }
 
 .fa-firstdraft {
@@ -46,7 +47,7 @@
 }
 
 .Nav-Links1:hover {
-  background-color: #1888ff;
+  background-color: #df405a;
   border-radius: 4px;
   transition: all 0.2s ease-out;
 }
@@ -96,7 +97,7 @@
   }
 
   .Nav-Links1:hover {
-    background-color: #1888ff;
+    background-color:#df405a;
     border-radius: 0;
   }
 
@@ -104,7 +105,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(25%, 50%);
+    transform: translate(0%, 0%);
   }
 
   .menu-icon {
@@ -129,7 +130,7 @@
     margin: 2rem auto;
     border-radius: 4px;
     width: 80%;
-    background: #1888ff;
+    background: #df405a;
     text-decoration: none;
     color: #fff;
     font-size: 1.5rem;
@@ -137,11 +138,15 @@
 
   .Nav-Links1-mobile:hover {
     background: #fff;
-    color: #1888ff;
+    color: #df405a;
     transition: 250ms;
   }
 
   button {
     display: none;
   }
+  
+  
 }
+
+

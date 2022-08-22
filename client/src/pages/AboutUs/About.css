@@ -1,15 +1,13 @@
 .head2 {
   /* background-color:
-  #94b49f;
+ #666;
   text-align: center;
   justify-content: center;
   margin: 50px 0 40px 0;
   color: rgb(56, 55, 55);
   font-family: sans-serif; */
-  background-color:
-  #94b49f;
+  /* background-color:#dee6de; */
   color: black;
-  padding: 30px;
   text-align: center;
   font-family: Robotto, sans-serif;
   font-size: 1.6rem;
@@ -30,7 +28,9 @@
 }
 
 .container {
-  margin: 70px 100px 50px 100px;
+  padding:30px;
+  margin: 10px 80px 50px 80px;
+  background-color: #dee6de;
 }
 
 ul .subpoint {

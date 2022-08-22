@@ -6,7 +6,7 @@ const crypto = require("crypto");
 const instituteSchema = new mongoose.Schema(
   {
     instituteId: {
-      type: String,
+      type: Number,
       required: true,
       unique: true,
       trim: true,
@@ -23,24 +23,28 @@ const instituteSchema = new mongoose.Schema(
     instituteName: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
+    },
+    instituteEmail: {
+      type: String,
+      // required: true,
     },
     instituteCourse: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
     instituteScholarship: {
       type: String,
       // required: true,
-      trim: true
+      trim: true,
     },
     instituteRegister: {
       type: String,
       required: true,
-      trim: true
+      trim: true,
     },
-    password :{
+    password: {
       type: String,
       required: true,
       minlength: 6,
@@ -48,9 +52,40 @@ const instituteSchema = new mongoose.Schema(
       select: false,
     },
     status: {
-      type:String,
-      default: "pending"
-    }
+      type: String,
+      default: "pending",
+    },
+    bankName: {
+      type: String,
+      // required: true,
+      trim: true,
+    },
+    bankAccountNumber: {
+      type: String,
+      // required: true,
+      trim: true,
+    },
+    bankIfscCode: {
+      type: String,
+      // required: true,
+      trim: true,
+    },
+    bankBranch: {
+      type: String,
+      // required: true,
+      trim: true,
+    },
+    courseId: {
+      type: String,
+      // required: true,
+      trim: true,
+    },
+    logo: {
+      type: String,
+    },
+    instituteAddress: {
+      type: String,
+    },
   },
   { timestamps: true }
 );

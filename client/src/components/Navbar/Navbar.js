@@ -6,6 +6,7 @@ import Dropdown from "../Dropdown/Dropdown";
 import { RiArrowDropDownFill } from "react-icons/ri";
 import { GiCancel } from "react-icons/gi";
 import { GoThreeBars } from "react-icons/go";
+import SideBar from "../side_bar/side_bar";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -46,6 +47,7 @@ function Navbar() {
     <>
       {(!user) ? (
         <nav className="Navbar1">
+        <div className="logo">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
           <img
             src="/images/sih_logo.png"
@@ -56,6 +58,7 @@ function Navbar() {
             alt="example"
           />
           </Link>
+          </div>
           <div className="menu-icon" onClick={handleClick}>
             <i className="fa-bars">{click ? <GiCancel /> : <GoThreeBars />}</i>
           </div>
@@ -125,7 +128,7 @@ function Navbar() {
           {/* <Button /> */}
         </nav>
       ) : (
-        ""
+        <SideBar />
       )}
     </>
   );

@@ -4,7 +4,7 @@ import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
 import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Ecommerce, Orders, Calendar, Employees, Stacked, Pyramid, Customers, Kanban, Line, Area, Bar, Pie, Financial, ColorPicker, ColorMapping, Editor, CreateInstitute, UpdateInstitute } from './pages';
+import { DashBoard, Selected, Calendar, Institute, Student, Kanban, Editor, CreateInstitute, UpdateInstitute, StudentData, InstituteData } from './pages';
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
@@ -65,33 +65,25 @@ const App = () => {
 
               <Routes>
                 {/* dashboard  */}
-                <Route path="/" element={<Ecommerce />} />
-                <Route path="/Admin%20Panel" element={<Ecommerce />} />
+                <Route path="/" element={<DashBoard />} />
+                <Route path="/Admin%20Panel" element={<DashBoard />} />
                 <Route path="/create" element={<CreateInstitute />} />
 
                 {/* pages  */}
-                <Route path="/Selected%20List" element={<Orders />} />
-                <Route path="/Institute%20List" element={<Employees />} />
-                <Route path="/Student%20List" element={<Customers />} />
+                <Route path="/Selected%20List" element={<Selected />} />
+                <Route path="/Institute%20List" element={<Institute />} />
+                <Route path="/admin/Student%20List/:name" element={<Student />} />
                 <Route path="/institute/create" element={<CreateInstitute />} />
                 <Route path="institute/update/:id" element={<UpdateInstitute />} />
+                <Route path="admin/student/:id" element={<StudentData />} />
+                <Route path="/Student%20List" element={<Student />} />
+                <Route path="/Student%20List/:id" element={<Student />} />
+                <Route path="/admin/getinstitute/:id" element={<InstituteData />} />
 
                 {/* apps  */}
                 <Route path="/kanban" element={<Kanban />} />
                 <Route path="/editor" element={<Editor />} />
                 <Route path="/calendar" element={<Calendar />} />
-                <Route path="/color-picker" element={<ColorPicker />} />
-
-                {/* charts  */}
-                <Route path="/line" element={<Line />} />
-                <Route path="/area" element={<Area />} />
-                <Route path="/bar" element={<Bar />} />
-                <Route path="/pie" element={<Pie />} />
-                <Route path="/financial" element={<Financial />} />
-                <Route path="/color-mapping" element={<ColorMapping />} />
-                <Route path="/pyramid" element={<Pyramid />} />
-                <Route path="/stacked" element={<Stacked />} />
-
               </Routes>
             </div>
             <Footer />

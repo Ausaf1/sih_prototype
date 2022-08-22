@@ -1,19 +1,20 @@
 .dropdown-menu {
-  background: red;
+  background: #df405a;
   width: 200px;
   position: absolute;
   top: 80px;
   list-style: none;
   text-align: start;
+  z-index: 3;
 }
 
 .dropdown-menu li {
-  background: #1888ff;
+  background:#df405a;
   cursor: pointer;
 }
 
 .dropdown-menu li:hover {
-  background: #5cabff;
+  background:#df405a;
 }
 
 .dropdown-menu.clicked {
@@ -28,6 +29,7 @@
   color: #fff;
   padding: 16px;
   opacity: 1000;
+  /* z-index: ; */
 }
 
 @media screen and (max-width: 960px) {

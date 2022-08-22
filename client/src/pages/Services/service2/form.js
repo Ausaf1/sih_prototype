@@ -38,7 +38,7 @@ function Form() {
           </div>
         </div>
         <Items />
-        <div className="form">
+        <div className="form1">
           {feedbackState && (<textarea id="f-message" placeholder="Feedback Message"></textarea>)}
         </div>
         {complaintState && (

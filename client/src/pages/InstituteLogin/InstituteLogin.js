@@ -1,14 +1,19 @@
-import React, { useEffect, useState }  from 'react'
-import './Institute.css'
-import { useNavigate } from "react-router-dom";
-import {AiOutlineUnlock, AiOutlineMail} from 'react-icons/ai'
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import React, { useEffect, useState } from "react";
+import "./Institute.css";
+import { useNavigate, Link } from "react-router-dom";
+import {
+  AiOutlineUnlock,
+  AiOutlineMail,
+  AiOutlineArrowRight,
+} from "react-icons/ai";
 import axios from "axios";
 const InstituteLogin = () => {
   const [instituteId, setinstituteId] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
       navigate("/institute/dashboard");
@@ -39,7 +44,7 @@ const InstituteLogin = () => {
     }
   };
   return (
-      <div id="login-pagee">
+    <div id="login-pagee">
       <div className="loginn">
         <div className="login-icon">
           <img
@@ -50,7 +55,7 @@ const InstituteLogin = () => {
         <h2 className="login-title">Login</h2>
         <p className="notice">Please login to access the system</p>
         <form className="form-login" onSubmit={loginHandler}>
-        {error && <span className="error">{error}</span>}
+          {error && <span className="error">{error}</span>}
           <label for="instituteId">Institute Id</label>
           <div className="input-email">
             <AiOutlineMail className="icon" />
@@ -59,8 +64,8 @@ const InstituteLogin = () => {
               name="instituteId"
               placeholder="Enter your officer id"
               value={instituteId}
-            onChange={(e) => setinstituteId(e.target.value)}
-            required
+              onChange={(e) => setinstituteId(e.target.value)}
+              required
             />
           </div>
           <label for="password">Password</label>
@@ -71,8 +76,8 @@ const InstituteLogin = () => {
               name="password"
               placeholder="Enter your password"
               value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
+              onChange={(e) => setPassword(e.target.value)}
+              required
             />
           </div>
 
@@ -86,12 +91,15 @@ const InstituteLogin = () => {
           Is Your Institute not registered? Register and get your University
           Code.
         </h1>
-        <a href="##" class="arrow">
-          Arrow
+        {/* <Link to="/Service3" > */}
+        <a class="arrow">
+          <Link to="/Service3">
+            <AiOutlineArrowRight />
+          </Link>
         </a>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default InstituteLogin
+export default InstituteLogin;

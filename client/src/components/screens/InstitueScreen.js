@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import Profile from "../../pages/Institute_Side/profile/profile";
+// import './instituteScreen.css'
 const PrivateScreen = () => {
   const [error, setError] = useState("");
   const [privateData, setPrivateData] = useState("");
@@ -35,17 +36,21 @@ const PrivateScreen = () => {
     fetchPrivateData();
   }, [navigate]);
 
-  const logoutHandler = async () => {
-    localStorage.removeItem("authToken");
-    navigate("/instituteLogin");
-  };
+  // const logoutHandler = async () => {
+  //   localStorage.removeItem("authToken");
+  //   navigate("/instituteLogin");
+  // };
 
   return error ? (
     <span className="error">{error}</span>
   ) : (
     <>
-      `You are logged in as {privateData}`
-      <button onClick={logoutHandler}>Logout</button>
+      {/* <button onClick={logoutHandler}>Logout</button> */}
+      <div className='rowC'>
+        <Profile />
+      </div>
+
+
     </>
   );
 };

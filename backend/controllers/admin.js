@@ -1,6 +1,7 @@
 // const InstituteDetail = require("../models/InstituteDetail");
 const Institute = require("../models/Institute");
 const Student = require("../models/Student");
+const Notice = require("../models/Notice");
 const ErrorResponse = require("../utils/errorResponse");
 
 exports.CreateInstitute = async (req, res, next) => {
@@ -54,6 +55,8 @@ exports.getInstitute = async (req, res, next) => {
         // instituteScholarship: institute.instituteScholarship,
         instituteRegister: institute.instituteRegister,
         status: institute.status,
+        courseId: institute.courseId,
+        instituteId: institute.instituteId,
       };
     });
 
@@ -111,8 +114,20 @@ exports.getParticularInstitute = async (req, res, next) => {
   });
 };
 
+exports.getParticularStudent = async (req, res, next) => {
+  const { id } = req.params;
+  const student = await Student.findById({ _id: id });
+  if (!student) {
+    return next(new ErrorResponse(`Institute not found`, 404));
+  }
+  res.status(200).json({
+    success: true,
+    data: student,
+  });
+};
+
 exports.deleteInstitute = async (req, res, next) => {
-  console.log(req);
+  // console.log(req);
   const { id } = req.params;
   console.log(id);
   const institute = await Institute.findByIdAndDelete({ _id: id });
@@ -128,9 +143,127 @@ exports.deleteInstitute = async (req, res, next) => {
 exports.getStudent = async (req, res, next) => {
   try {
     const student = await Student.find();
-    const studentArray = student.map((institute) => {
+    // get only not selected student
+    const studentArray = student
+      .filter((student) => {
+        return student.isSelected === true;
+      })
+      .map((student) => {
+        return {
+          id: student._id,
+          studentId: student.studentId,
+          studentName: student.studentName,
+          studentCourse: student.studentCourse,
+          phoneNumber: student.phoneNumber,
+          email: student.email,
+          marksheet10th: student.marksheet10th,
+          marksheet12th: student.marksheet12th,
+          incomeCertificate: student.incomeCertificate,
+          domicileCertificate: student.domicileCertificate,
+          aadharCard: student.aadharCard,
+          instituteName: student.instituteName,
+          status: student.status,
+        };
+      });
+
+    res.status(200).json({
+      success: true,
+      data: studentArray,
+    });
+  } catch (err) {
+    console.log(err);
+    return next(new ErrorResponse(`${err.message}`, 400));
+  }
+};
+
+exports.updateStudent = async (req, res, next) => {
+  const ids = req.body;
+  // console.log(ids);
+  const arrayIds = Object.values(ids);
+  console.log(arrayIds);
+  arrayIds[0]?.map((id) =>
+    Student.findByIdAndUpdate(id, { isSelected: true }, (err, doc) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log({
+          doc: doc,
+        });
+      }
+    })
+  );
+  res.status(200).json({
+    success: true,
+    data: arrayIds,
+  });
+};
+
+exports.updatePayment = async (req, res, next) => {
+  const ids = req.body;
+  // console.log(ids);
+  const arrayIds = Object.values(ids);
+  console.log(arrayIds);
+  arrayIds[0]?.map((id) =>
+    Student.findByIdAndUpdate(id, { status: "complete" }, (err, doc) => {
+      if (err) {
+        console.log(err);
+      } else {
+        console.log({
+          doc: doc,
+        });
+      }
+    })
+  );
+  res.status(200).json({
+    success: true,
+    data: arrayIds,
+  });
+};
+
+exports.getAllSelectedStudent = async (req, res, next) => {
+  try {
+    const student = await Student.find();
+    // get only selected student
+    const studentArray = student
+      .filter((student) => {
+        console.log(student.isSelected);
+        return student.isSelected === true;
+      })
+      .map((student) => {
+        return {
+          id: student._id,
+          studentId: student.studentId,
+          studentName: student.studentName,
+          studentCourse: student.studentCourse,
+          phoneNumber: student.phoneNumber,
+          email: student.email,
+          marksheet10th: student.marksheet10th,
+          marksheet12th: student.marksheet12th,
+          incomeCertificate: student.incomeCertificate,
+          domicileCertificate: student.domicileCertificate,
+          aadharCard: student.aadharCard,
+          instituteName: student.instituteName,
+          status: student.status,
+        };
+      });
+    res.status(200).json({
+      success: true,
+      data: studentArray,
+    });
+  } catch (err) {
+    console.log(err);
+    return next(new ErrorResponse(`${err.message}`, 400));
+  }
+};
+
+exports.getStudentByInstitute = async (req, res, next) => {
+  const { name } = req.params;
+  console.log(name);
+  try {
+    const student = await Student.find({ instituteName: name });
+    const studentArray = student.map((student) => {
       return {
-        id : student._id,
+        id: student._id,
         studentId: student.studentId,
         studentName: student.studentName,
         studentCourse: student.studentCourse,
@@ -141,9 +274,10 @@ exports.getStudent = async (req, res, next) => {
         incomeCertificate: student.incomeCertificate,
         domicileCertificate: student.domicileCertificate,
         aadharCard: student.aadharCard,
+        instituteName: student.instituteName,
+        status: student.status,
       };
     });
-
     res.status(200).json({
       success: true,
       data: studentArray,
@@ -152,4 +286,17 @@ exports.getStudent = async (req, res, next) => {
     console.log(err);
     return next(new ErrorResponse(`${err.message}`, 400));
   }
+};
+
+exports.addNotice = async (req, res, next) => {
+  const { notice } = req.body;
+  // console.log(notice);
+  const newNotice = new Notice({
+    notice: notice,
+  });
+  await newNotice.save();
+  res.status(200).json({
+    success: true,
+    data: newNotice,
+  });
 };

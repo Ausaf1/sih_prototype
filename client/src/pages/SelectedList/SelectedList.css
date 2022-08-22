@@ -1,0 +1,25 @@
+.Container1 {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: aliceblue;
+  }
+  
+  .heading{
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+  }
+  
+  .search-btn{
+      margin-top: 10px;
+      margin-bottom: 10px;
+      background-color: #00bcd4;
+      color: white;
+      border: none;
+      padding: 10px;
+      border-radius: 5px;
+  }
+  
+  .search-btn:hover{
+      background-color: #00acc1;
+  }

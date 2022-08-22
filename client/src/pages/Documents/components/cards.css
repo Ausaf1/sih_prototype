@@ -20,7 +20,7 @@
   border-radius: 25px 25px 0 0;
   height: 100px;
   width: 100%;
-  background-color: #94b49f;
+  background-color: #fff;
   position: absolute;
   top: 0;
   left: 0;
@@ -38,7 +38,7 @@
 .card img {
   margin: 30px 20px 0 0;
   padding: 12px;
-  background-color: #94b49f;
+  background-color: white;
 }
 
 .circle-img {
@@ -61,7 +61,7 @@
 .download-button {
   width: 15%;
   height: 30px;
-  background-color: #94b49f;
+  background-color: white;
   border: 1px solid black;
   border-radius: 3px;
   margin-top: 9px;

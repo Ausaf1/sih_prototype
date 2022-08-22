@@ -7,7 +7,6 @@ const studentSchema = new mongoose.Schema(
   {
     studentName: {
       type: String,
-      ref: "instituteId",
       required: true,
     },
     email: {
@@ -18,7 +17,7 @@ const studentSchema = new mongoose.Schema(
     studentCourse: {
       type: String,
       required: true,
-      unique: true,
+      sparse: true,
     },
     phoneNumber: {
       type: String,
@@ -27,13 +26,11 @@ const studentSchema = new mongoose.Schema(
     },
     marksheet10th: {
       type: String,
-      required: true,
-      unique: true,
+      required: true
     },
     marksheet12th: {
       type: String,
-      required: true,
-      unique: true,
+      required: true
     },
     incomeCertificate: {
       type: String,
@@ -49,6 +46,19 @@ const studentSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
+    },
+    instituteName: {
+      type: String,
+      ref: "instituteId",
+      required: true,
+    },
+    isSelected: {
+      type: Boolean,
+      default: false,
+    },
+    status: {
+      type: String,
+      default: "pending",
     },
   },
   { timestamps: true }

@@ -13,10 +13,12 @@ connectDB();
 const corsOrigin = ["http://localhost:3000", "http://localhost:3001", "http://localhost:3002"];
 app.use(cors({ origin: corsOrigin, optionsSuccessStatus: 200 }));
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/private", require("./routes/private"));
 app.use("/api/admin", require("./routes/admin"));
+app.use("/api/institute", require("./routes/institute"));
 
 app.use(errorHandler);
 
