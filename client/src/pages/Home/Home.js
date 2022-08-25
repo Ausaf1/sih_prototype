@@ -3,7 +3,7 @@ import React from "react";
 import Slider from "../../components/Carousel/Slider";
 import BannerTop from "./banners/bannerTop/bannerTop";
 import BannerMid from "./banners/bannerMid/bannerMid";
-// import BannerBottom from "./banners/bannerbottom/bannerBottom";
+import BannerBottom from "./banners/bannerbottom/bannerBottom";
 import "./Home.css";
 
 const Home = () => {
@@ -70,11 +70,11 @@ const Home = () => {
       </div>
       <BannerMid />
 
-      {/* <div className='banner-bootom-text'>
+      <div className='banner-bootom-text'>
         <h1 >NATIONAL SCHOLARSHIP AGENCY</h1>
         <p>World’s biggest platform for the innovators or entrepreneurs of tomorrow to start today towards a smarter India</p>
       </div>
-      <BannerBottom /> */}
+      <BannerBottom />
     </>
   );
 };
