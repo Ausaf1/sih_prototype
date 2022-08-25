@@ -1,0 +1,151 @@
+.student-form {
+  width: 80%;
+  height: 100%;
+  background-color: #dee6de;
+
+  padding: 40px 20px;
+  text-align: center;
+  margin: 40px auto;
+  border-radius: 16px;
+}
+.student-form-body {
+  /* width: 100%; */
+  /* height: 100%; */
+  background-color: #dee6de;
+  /* background-color: #aaa7d7; */
+  padding: 20px;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: row;
+}
+.student-form-footer {
+  width: 100%;
+  height: 100%;
+  background-color: #dee6de;
+  /* background-color: #aaa7d7; */
+  padding: 20px;
+  /* text-align: center; */
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+}
+.student-form-body-left-top-left {
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+.student-form-body-right-top-left {
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+.documents {
+  padding: 10px;
+  margin-left: 8rem;
+  align-items: center;
+  justify-content: center;
+}
+.doc-name {
+  margin-top: 10px;
+}
+/* .doc-input {
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    border: 1px solid #aaa7d7;
+    padding: 10px;
+  } */
+.student-form-body-left-top-right {
+  width: 50%;
+  height: 50%;
+  padding: 20px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+}
+.student-form-body-left-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.student-form-body-left-bottom {
+  display: flex;
+  flex-direction: column;
+}
+.student-form-body-left {
+  border-right: 2px solid #2a293b;
+}
+.details {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 15px;
+}
+.input1 {
+  width: 100%;
+  height: 30px;
+  border-radius: 2px;
+  border: none;
+  border-bottom: 0.5px solid black;
+  padding: 5px;
+  outline: none;
+  padding: 10px;
+  font-family: Public Sans, sans-serif;
+}
+.doc-input {
+  align-items: center;
+  width: 100%;
+  height: 30px;
+  border-radius: 2px;
+  border: none;
+  border-bottom: 0.5px solid black;
+  padding: 5px;
+  margin: 5px;
+  outline: none;
+  padding: 10px;
+  font-family: Public Sans, sans-serif;
+}
+#student-form-submit {
+  width: 19%;
+  background-color: rgb(52, 158, 207);
+  box-sizing: border-box;
+  margin: 20px auto;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+#student-form-submit:hover {
+  background-color: rgb(21, 83, 112);
+}
+.student-form-body-left {
+  width: 50%;
+  height: auto;
+  background-color: #dee6de;
+  text-align: left;
+  padding: 20px;
+}
+
+.student-form-body-right {
+  width: 50%;
+  height: auto;
+  background-color: #dee6de;
+  text-align: right;
+  padding: 20px;
+}
+
+@media only screen and (max-width: 768px){
+.documents{
+  margin-left: 5rem;
+  margin: auto;
+}
+.student-form-body{
+  flex-direction: column;
+}
+}

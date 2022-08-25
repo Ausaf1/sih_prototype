@@ -1,0 +1,11 @@
+export { default as DashBoard } from './DashBoard';
+export { default as Kanban } from './Kanban';
+export { default as Selected } from './Selected';
+export { default as Institute } from './Institute';
+export { default as Editor } from './Editor';
+export { default as Student } from './Student';
+export { default as Calendar } from './Calendar';
+export { default as CreateInstitute } from './CreateInstitute';
+export { default as UpdateInstitute } from './UpdateInstitute';
+export { default as StudentData } from './StudentData';
+export { default as InstituteData } from './InstituteData';

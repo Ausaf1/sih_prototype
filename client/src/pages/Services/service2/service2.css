@@ -1,0 +1,148 @@
+.heading-query {
+  background-color: #dee6de;
+  color: black;
+  padding: 30px;
+  text-align: center;
+  font-family: Robotto, sans-serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+}
+
+.sub-heading-query {
+  font-size: 26px;
+  font-weight: lighter;
+}
+
+.container-query {
+  margin: 50px 50px 25px 50px;
+  padding: 75px;
+  background-color: rgb(255, 255, 255);
+  height: auto;
+  width: 65%;
+  position: relative;
+  left: 15%;
+  box-shadow: 0px 0px 10px 0px rgba(67, 67, 68, 0.75);
+  border-radius: 10px;
+}
+
+.line {
+  width: 200px;
+  height: 5px;
+  background: linear-gradient(45deg, #000, white);
+}
+
+.form-type {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  margin-bottom: 35px;
+}
+
+.type {
+  display: flex;
+  flex-direction: row;
+  margin-left: 5%;
+}
+
+.r-button {
+  margin-right: 5px;
+}
+
+.form-items #email {
+  margin-top: 1px;
+}
+.form1 {
+  display: flex;
+  flex-direction: row;
+  color: rgb(144, 148, 153);
+  flex-wrap: wrap;
+  font-size: 100%;
+}
+
+.form-input {
+  border: none;
+  border-bottom: 1px solid rgb(218, 222, 227);
+  margin: 7px 0 10px 0;
+  outline: none;
+  font-size: 100%;
+  color: rgb(45, 47, 48);
+}
+
+#email {
+  border: none;
+  border-bottom: 1px solid rgb(218, 222, 227);
+}
+
+.form-items {
+  display: flex;
+  flex-direction: column;
+  margin: 20px 20px 0 20px;
+}
+
+.mandatory {
+  color: red;
+}
+
+#c-message {
+  width: 100%;
+  height: 70px;
+  border: none;
+  border-bottom: 1px solid rgb(218, 222, 227);
+  color: rgb(144, 148, 153);
+  font-family: Robotto, sans-serif;
+  outline: none;
+}
+#f-message {
+  margin: 20px;
+  width: 100%;
+  height: 70px;
+  border: none;
+  border-bottom: 1px solid rgb(218, 222, 227);
+  color: rgb(144, 148, 153);
+  font-family: Robotto, sans-serif;
+  outline: none;
+}
+
+.submit {
+  margin: 20px;
+  background-color: #94b49f;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  cursor: pointer;
+  border-color: none;
+  border-radius: 5px;
+}
+
+.submit:hover {
+  background-color: #df405a;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 960px) {
+  .form1 {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 764px) {
+  .form-type {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .type {
+    margin-left: 22%;
+  }
+  .container-query {
+    /* margin: 50px 50px 25px 50px; */
+    padding: 60px;
+    background-color: rgb(255, 255, 255);
+    left: 15%;
+    box-shadow: 0px 0px 10px 0px rgb(67 67 68 / 75%);
+    border-radius: 10px;
+  }
+}

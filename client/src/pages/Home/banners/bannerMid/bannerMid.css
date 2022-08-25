@@ -1,0 +1,123 @@
+/*primary:- 94B49F# */
+/* secondary color:CEE5D0 */
+/* tertiary color:FCF8E8 */
+/* ternary color:ECB390 */
+
+.bannerMid {
+  /* max-width: 80%; */
+  height: 350px;
+  background-color: #94b49f;
+  display: flex;
+  text-align: center;
+  margin: 40px auto;
+  box-sizing: border-box;
+  border-radius: 15px;
+  width: 80%;
+}
+
+.container1 {
+  position: relative;
+  /* max-width: 20%; */
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  font-size: 1.2vw;
+  margin: 2rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  justify-content: center;
+  /* max-width: 10%; */
+}
+
+.heading1 {
+  padding: 0%;
+  margin: 0;
+}
+
+.content1 {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  grid: 0%;
+  /* max-width: 900px; */
+}
+
+.box1 {
+  margin: 20px 7px;
+  padding-right: 10px;
+  border-right: 1px solid #94b49f;
+  width: 70%;
+  font-size: 1.7vw;
+}
+
+.box2 {
+  margin: 20px 7px;
+  width: 70%;
+  font-size: 1.2vw;
+}
+
+.nums {
+  font-size: 1.5vw;
+}
+.description {
+  line-height: 1;
+  font-size: 1.6vw;
+}
+
+/* @media only screen and (max-width:786px) {
+  .container1{
+    margin-left:1.3rem;
+    margin-right:1rem;
+  }
+} */
+.row1 {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+.row2 {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+.bannerMid {
+  height: 30%;
+}
+.content1 {
+  font-size: 200%;
+}
+@media only screen and (max-width: 1200px) {
+  /* /Tablets [601px -> 1200px]/ */
+}
+@media only screen and (max-width: 600px) {
+  /* /Big smartphones [426px -> 600px]/ */
+
+  .content1 {
+    flex-direction: column;
+  }
+  .row1 .row2 {
+    margin: 0;
+  }
+
+  .box1 {
+    margin: 3px;
+    padding: 3px;
+    width: 40%;
+    height: 20%;
+    font-size: 1.2vw;
+  }
+  .description-b-mid {
+    font-size: 230%;
+  }
+}
+@media only screen and (max-width: 425px) {
+  /* /Small smartphones [325px -> 425px]/ */
+}
